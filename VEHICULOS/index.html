@@ -1,0 +1,176 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAMWEB - Flota de Vehículos</title>
+    <link rel="stylesheet" href="estilos.css?v=20261109-sync">
+</head>
+
+<body>
+
+    <!-- ENCABEZADO PRINCIPAL -->
+    <header class="encabezado">
+
+        <!-- LOGO DE LA EMPRESA -->
+        <div class="logo-empresa">
+            <div class="marco-logo">
+                <span id="textoLogo">LOGO</span>
+
+                <img
+                    id="logoEmpresa"
+                    src=""
+                    alt="Logo de la empresa"
+                    hidden
+                >
+            </div>
+        </div>
+
+        <!-- NOMBRE DE LA EMPRESA -->
+        <div class="titulo-empresa">
+            <h1 id="nombreEmpresa">CAMWEB</h1>
+            <h2>FLOTA DE VEHÍCULOS</h2>
+        </div>
+
+        <!-- BOTÓN ADMIN Y MARCA CAMWEB -->
+        <div class="acciones-encabezado">
+
+            <button
+                type="button"
+                class="boton-admin"
+                id="botonAdmin"
+                aria-label="Acceso de administrador"
+                title="Acceso de administrador"
+            >
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a4.25 4.25 0 1 0 0-8.5 4.25 4.25 0 0 0 0 8.5Zm0 2c-4.4 0-8 2.25-8 5v1.5h16V19c0-2.75-3.6-5-8-5Z"/></svg>
+            </button>
+
+            <span class="marca-camweb">CAMWEB</span>
+
+        </div>
+
+    </header>
+
+    <div class="fondo-acceso-admin" id="fondoAccesoAdmin" hidden>
+        <form class="panel-acceso-admin" id="formularioAccesoAdmin">
+            <h2>INGRESO ADMIN</h2>
+            <label>Usuario
+                <input type="text" id="usuarioAccesoAdmin" autocomplete="username" required>
+            </label>
+            <label>Contraseña
+                <input type="password" id="contrasenaAccesoAdmin" autocomplete="current-password" required>
+            </label>
+            <p class="ayuda-acceso-admin" id="mensajeAccesoAdmin" aria-live="polite">Ingresa tus credenciales de administrador configuradas en Ajustes.</p>
+            <div class="acciones-acceso-admin">
+                <button type="button" class="cancelar-acceso-admin" id="cancelarAccesoAdmin">CANCELAR</button>
+                <button type="submit" class="ingresar-acceso-admin">INGRESAR</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="fondo-acceso-camion" id="fondoAccesoCamion" hidden>
+        <form class="panel-acceso-admin" id="formularioAccesoCamion" role="dialog" aria-modal="true" aria-labelledby="tituloAccesoCamion">
+            <h2 id="tituloAccesoCamion">INGRESO AL CAMIÓN</h2>
+            <p class="ayuda-acceso-admin" id="nombreAccesoCamion"></p>
+            <label>Usuario
+                <input type="text" id="usuarioAccesoCamion" autocomplete="username" required>
+            </label>
+            <label>Contraseña
+                <input type="password" id="contrasenaAccesoCamion" autocomplete="current-password" required>
+            </label>
+            <p class="ayuda-acceso-admin" id="mensajeAccesoCamion" aria-live="polite">Ingresa los datos asignados a este camión.</p>
+            <div class="acciones-acceso-admin">
+                <button type="button" class="cancelar-acceso-admin" id="cancelarAccesoCamion">CANCELAR</button>
+                <button type="submit" class="ingresar-acceso-admin">INGRESAR</button>
+            </div>
+        </form>
+    </div>
+
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="contenido">
+
+        <!-- LATERAL IZQUIERDO -->
+        <aside
+            class="lateral lateral-izquierdo"
+            aria-hidden="true"
+        ></aside>
+
+
+        <!-- FLOTA DE VEHÍCULOS -->
+        <section class="zona-flota">
+
+            <div class="titulo-flota">
+                <h2>VEHÍCULOS</h2>
+            </div>
+
+            <!-- TARJETAS GENERADAS DESDE JAVASCRIPT -->
+            <div
+                class="rejilla-carros"
+                id="rejillaCarros"
+                aria-live="polite"
+            >
+                <!-- Los vehículos registrados aparecerán aquí -->
+            </div>
+
+            <section class="panel-registro-leche" id="panelRegistroLeche" hidden>
+                <div class="cabecera-registro-leche">
+                    <button type="button" class="boton-volver-flota" id="botonVolverFlota" title="Volver a la lista de camiones" aria-label="Volver a la lista de camiones">
+                        <svg class="icono-volver-flota" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M11 4 3 12l8 8v-5h10V9H11V4z M7 5 0 12l7 7v-4l-3-3 3-3V5z"/>
+                        </svg>
+                    </button>
+                    <h2>REGISTRO DE LECHE</h2>
+                </div>
+                <div class="acciones-modos-registro">
+                    <button type="button" class="boton-modo-descarga boton-modo-leche" id="botonAbrirRegistroLeche" aria-label="Registro de leche">
+                        <img src="../ADMINISTRADOR/imagenes/poronguito.svg" alt="" aria-hidden="true">
+                        <span>REGISTRO DE LECHE</span>
+                    </button>
+                    <button type="button" class="boton-modo-descarga" id="botonAbrirDescargaProducto" aria-label="Producto">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 5h12v3h4.2l3.3 4v5h-2.1a3 3 0 0 1-5.8 0H9.9a3 3 0 0 1-5.8 0H2V5Zm2 2v8h.2a3 3 0 0 1 5.6 0H12V7H4Zm10 3v5h.2a3 3 0 0 1 5.6 0h1.7v-2.3L17.3 10H14Zm-7 4.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Zm8.8 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Z"/><path d="M16 1v4h-2l3 3 3-3h-2V1h-2Z"/></svg>
+                        <span>PRODUCTO</span>
+                    </button>
+                </div>
+                <div class="datos-camion-registro" id="datosCamionRegistro"></div>
+                <div id="vistaDescargaProducto" class="vista-descarga-producto" hidden>
+                    <h3>SELECCIONA EL PROVEEDOR</h3>
+                    <div class="lista-proveedores-flota" id="listaProveedoresFlota" aria-live="polite"></div>
+                </div>
+                <div class="vista-clientes-leche" id="vistaClientesLeche" hidden>
+                <div class="herramientas-clientes">
+                    <button type="button" id="botonMicrofonoLeche" class="boton-microfono" aria-label="Buscar cliente o dictar litros">🎙</button>
+                    <label class="buscador-clientes-flota"><span class="solo-lectores">Buscar cliente</span><input type="search" id="buscarClienteLeche" placeholder="Buscar cliente..." autocomplete="off"></label>
+                    <button type="button" id="botonBuscarClienteLeche" class="boton-buscar-leche" aria-label="Buscar">⌕</button>
+                </div>
+                <p class="ayuda-voz-leche" id="estadoVozLeche" aria-live="polite">Selecciona un cliente para dictar los litros.</p>
+                <div class="lista-clientes-flota" id="listaClientesLeche" aria-live="polite"></div>
+                </div>
+            </section>
+        </section>
+
+
+        <!-- LATERAL DERECHO -->
+        <aside
+            class="lateral lateral-derecho"
+            aria-hidden="true"
+        ></aside>
+
+    </main>
+
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="pie-pagina">
+        CAMWEB · Gestión de recolección de leche
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../SUPABASE/supabase-client.js"></script>
+    <script src="../SUPABASE/supabase-data-bridge.js?v=20261109-sync"></script>
+    <script src="script.js?v=20261109-sync"></script>
+
+</body>
+</html>
