@@ -1,0 +1,41 @@
+name: Publicar CAMWEB en GitHub Pages
+
+on:
+  push:
+    branches: [principal]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el proyecto
+        uses: actions/checkout@v6
+      - name: Preparar GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: Preparar los archivos del sitio
+        run: |
+          mkdir -p _site
+          cp -R ADMINISTRADOR 'GERENTE GENERAL' SUPABASE VEHICULOS _site/
+          printf '%s\n' '<!doctype html>' '<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="refresh" content="0;url=VEHICULOS/index.html"><title>CAMWEB</title></head><body><p><a href="VEHICULOS/index.html">Abrir CAMWEB</a></p></body></html>' > _site/index.html
+          touch _site/.nojekyll
+      - name: Cargar archivos para publicación
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+      - name: Publicar sitio
+        id: deployment
+        uses: actions/deploy-pages@v4
+``
