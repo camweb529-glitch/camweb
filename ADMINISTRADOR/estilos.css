@@ -1,0 +1,3693 @@
+
+:root {
+    --verde-fondo: #e3eee0;
+    --verde-principal: #246b38;
+    --verde-lateral: #285832;
+    --verde-encabezado: #eef4eb;
+    --verde-oscuro: #285832;
+    --blanco: #ffffff;
+    --borde: #c9d8c4;
+    --texto: #243124;
+}
+
+/* Tablero analítico */
+.tablero-analitico{padding:clamp(16px,3vw,30px);background:#f5f8f4;border:1px solid #dce7d8;border-radius:14px}
+.encabezado-tablero{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:22px}
+.encabezado-tablero>div{width:100%;text-align:center}
+.sobrelinea-tablero{color:#64806a;font-size:10px;font-weight:800;letter-spacing:.16em}
+.encabezado-tablero h2{margin:5px 0;color:#1d3824;font-size:clamp(22px,3vw,30px)}
+.encabezado-tablero p,.titulo-panel-tablero p{margin:0;color:#718075;font-size:12px}
+.estado-tablero{padding:8px 11px;border:1px solid #dce7d8;border-radius:20px;background:#fff;color:#68766b;font-size:11px;white-space:nowrap}
+.filtros-tablero{display:grid;grid-template-columns:repeat(4,minmax(130px,1fr));gap:9px;margin-bottom:13px;padding:10px 12px;border:1px solid #e1e9de;border-radius:10px;background:#fff}
+.filtros-tablero label{display:flex;flex-direction:column;gap:4px;color:#59685b;font-size:9px;font-weight:800}
+.filtros-tablero input,.filtros-tablero select{width:100%;height:33px;padding:0 9px;border:1px solid #dce5d9;border-radius:6px;background:#fbfdfb;color:#26382a;font-size:11px}
+.kpis-tablero{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;margin-bottom:12px}
+.kpis-tablero.cuatro-kpis{grid-template-columns:repeat(4,minmax(0,1fr))}
+.kpis-tablero.tres-kpis{grid-template-columns:repeat(3,minmax(0,1fr))}
+.kpi-tablero{display:flex;min-width:0;align-items:center;gap:7px;padding:7px 9px;border:1px solid #e0e8dd;border-radius:8px;background:#fff;box-shadow:0 2px 7px rgba(27,62,37,.03)}
+.icono-kpi-tablero{display:grid;width:26px;height:26px;flex:0 0 26px;place-items:center;border-radius:7px;background:#edf5eb;font-size:13px}
+.kpi-tablero.azul .icono-kpi-tablero{background:#edf4fa}.kpi-tablero.ambar .icono-kpi-tablero{background:#fff5df}.kpi-tablero.rojo .icono-kpi-tablero{background:#fff0ed}
+.kpi-tablero>div{display:flex;min-width:0;flex-direction:column;gap:2px}
+.etiqueta-kpi-tablero{color:#718075;font-size:9px;font-weight:700}
+.valor-kpi-tablero{overflow:hidden;color:#1e3524;font-size:18px;line-height:1.05;text-overflow:ellipsis;white-space:nowrap}
+.kpi-tablero small{color:#8a958c;font-size:8px;line-height:1.2}
+.rejilla-graficos-tablero{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(280px,1fr);gap:14px;margin-bottom:14px}
+.panel-grafico-tablero,.panel-tabla-tablero{min-width:0;padding:17px;border:1px solid #e0e8dd;border-radius:11px;background:#fff}
+.titulo-panel-tablero{position:relative;display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:17px}
+.titulo-panel-tablero>div:first-child{flex:1;text-align:center}
+.titulo-panel-tablero>.leyenda-tablero{position:absolute;top:0;right:0}
+.titulo-panel-tablero h3{margin:0 0 4px;color:#263a2a;font-size:14px}
+.leyenda-tablero{display:flex;max-height:72px;flex-wrap:wrap;gap:7px 12px;overflow-y:auto;color:#6c786e;font-size:10px}
+.leyenda-tablero span{display:flex;align-items:center;gap:5px}.leyenda-tablero i{width:8px;height:8px;border-radius:50%}
+.punto-recogido,.barra-recogido{background:#31844d}.punto-descargado,.barra-descargado{background:#80b8cf}
+.grafico-columnas-tablero{display:flex;height:220px;align-items:stretch;gap:7px;overflow-x:auto;padding:8px 3px 0;border-bottom:1px solid #e8eee6}
+.grafico-lineas-tablero{display:block;height:220px;overflow:hidden;padding:4px 0 0;border-bottom:0}
+.grafico-lineas-tablero svg{display:block;width:100%;height:100%;overflow:visible}
+.linea-guia-tablero{stroke:#e8eee6;stroke-width:1}
+.etiqueta-eje-tablero{fill:#758078;font-family:Arial,Helvetica,sans-serif;font-size:10px}
+.trazo-recogido-tablero,.trazo-descargado-tablero,.trazo-serie-cliente-tablero{fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.trazo-recogido-tablero{stroke:#31844d}.trazo-descargado-tablero{stroke:#80b8cf}
+.punto-recogido-tablero{fill:#31844d}.punto-descargado-tablero{fill:#80b8cf}
+.columna-periodo-tablero{display:flex;min-width:38px;flex:1;flex-direction:column;justify-content:flex-end}
+.par-barras-tablero{display:flex;height:190px;align-items:flex-end;justify-content:center;gap:4px;position:relative}
+.par-barras-tablero>span{width:min(24px,36%);min-height:0;border-radius:4px 4px 0 0;transition:height .2s}
+.par-barras-tablero small{position:absolute;bottom:-22px;left:50%;width:max-content;max-width:68px;overflow:hidden;color:#758078;font-size:9px;text-overflow:ellipsis;transform:translateX(-50%);white-space:nowrap}
+.grafico-vacio-tablero{display:grid;min-height:140px;place-items:center;color:#839087;font-size:12px}
+.grafico-camiones-tablero{display:flex;max-height:240px;flex-direction:column;gap:13px;overflow-y:auto;padding-right:3px}
+.comparacion-con-leyenda{display:grid;grid-template-columns:minmax(110px,.9fr) minmax(130px,1.3fr);align-items:start;gap:10px}
+.comparacion-con-leyenda.solo-leyenda{grid-template-columns:minmax(0,1fr)}
+.leyenda-clientes-comparacion{display:flex;max-height:240px;flex-direction:column;flex-wrap:nowrap;gap:7px;overflow-y:auto;font-size:9px}
+.leyenda-clientes-comparacion span{min-width:0;align-items:flex-start;overflow-wrap:anywhere;line-height:1.2}
+.leyenda-clientes-comparacion i{flex:0 0 8px;margin-top:2px}
+#leyendaMetricasCamionTablero[hidden],#graficoCamionesTablero[hidden]{display:none!important}
+.fila-grafico-camion-tablero{display:grid;grid-template-columns:42px minmax(70px,1fr);gap:5px 8px;align-items:center}
+.fila-grafico-camion-tablero>strong{overflow:hidden;color:#46574a;font-size:10px;text-overflow:ellipsis;white-space:nowrap}
+.lineas-grafico-camion-tablero{display:flex;flex-direction:column;gap:4px}
+.pista-barra-tablero{height:7px;overflow:hidden;border-radius:10px;background:#f0f3ef}.pista-barra-tablero span{display:block;height:100%;min-width:0;border-radius:10px}
+.fila-grafico-camion-tablero>small{grid-column:2;color:#849087;font-size:9px}
+.envoltura-tabla-tablero{overflow-x:auto}
+.envoltura-tabla-tablero table{width:100%;border-collapse:collapse;white-space:nowrap}
+.envoltura-tabla-tablero th{padding:10px 9px;border-bottom:1px solid #e7ede5;color:#718075;font-size:9px;text-align:left}
+.envoltura-tabla-tablero td{padding:11px 9px;border-bottom:1px solid #eff2ee;color:#47564a;font-size:11px}
+.envoltura-tabla-tablero tr:last-child td{border-bottom:0}
+.balance-positivo-tablero{color:#287342!important;font-weight:800}.balance-negativo-tablero{color:#bb5146!important;font-weight:800}
+.fila-sin-camion-tablero td{color:#8b7041!important;font-style:italic}
+.nota-tablero{margin:11px 0 0;color:#8a958c;font-size:10px}
+@media(max-width:900px){.kpis-tablero{grid-template-columns:repeat(3,minmax(0,1fr))}.rejilla-graficos-tablero{grid-template-columns:1fr}}
+@media(max-width:900px){.kpis-tablero.cuatro-kpis{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:600px){.tablero-analitico{padding:13px}.encabezado-tablero{align-items:flex-start;flex-direction:column}.filtros-tablero{grid-template-columns:repeat(2,minmax(0,1fr));padding:10px}.kpis-tablero{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.kpi-tablero{padding:11px 9px;gap:8px}.icono-kpi-tablero{width:31px;height:31px;flex-basis:31px}.valor-kpi-tablero{font-size:17px}.titulo-panel-tablero{align-items:center;flex-direction:column}.titulo-panel-tablero>.leyenda-tablero{position:static}.comparacion-con-leyenda{grid-template-columns:minmax(0,1fr)}.leyenda-clientes-comparacion{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));max-height:120px}.fila-grafico-camion-tablero{grid-template-columns:42px minmax(65px,1fr)}}
+@media(max-width:600px){.kpis-tablero.cuatro-kpis,.kpis-tablero.tres-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--verde-fondo);
+    color: var(--texto);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+/* ENCABEZADO */
+
+.encabezado {
+    width: 100%;
+    min-height: 110px;
+    padding: 12px 24px;
+    display: grid;
+    grid-template-columns: 150px minmax(0, 1fr) 150px;
+    align-items: center;
+    gap: 12px;
+    background: var(--verde-fondo);
+    border-bottom: 3px solid var(--verde-principal);
+}
+
+.zona-logo {
+    width: 110px;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 1px dashed var(--verde-principal);
+    border-radius: 6px;
+    color: var(--verde-principal);
+    font-weight: bold;
+}
+
+.zona-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.titulo-empresa {
+    min-width: 0;
+    text-align: center;
+}
+
+.titulo-empresa h1 {
+    margin: 0;
+    color: var(--verde-oscuro);
+    font-size: clamp(18px, 2vw, 28px);
+    overflow-wrap: anywhere;
+}
+
+.titulo-empresa p {
+    margin: 6px 0 0;
+    color: var(--verde-oscuro);
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.marca-camweb {
+    justify-self: end;
+    align-self: start;
+    margin-top: 4px;
+    color: var(--verde-principal);
+    font-size: 23px;
+    font-weight: 900;
+}
+
+/* PANELES PRINCIPALES */
+
+.paneles-principales {
+    display: grid;
+    grid-template-columns: 15% minmax(0, 70%) 15%;
+    min-height: calc(100vh - 110px);
+    background: var(--verde-fondo);
+}
+
+.panel-lateral,
+.panel-central {
+    min-width: 0;
+    padding: 16px;
+    background: var(--verde-fondo);
+}
+
+.panel-izquierdo {
+    position: relative;
+    z-index: 1002;
+    border-right: 1px solid var(--borde);
+}
+
+.panel-central {
+    background: #f6faf3;
+    border-right: 1px solid var(--borde);
+    border-left: 1px solid var(--borde);
+}
+
+.panel-derecho {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.contenido-panel {
+    width: 100%;
+    min-width: 0;
+}
+
+/* NAVEGACIÓN */
+
+.boton-menu,
+.boton-dashboard,
+.botones-centro button {
+    min-height: 44px;
+    padding: 11px 12px;
+    border: 0;
+    border-radius: 6px;
+    background: var(--verde-principal);
+    color: var(--blanco);
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.boton-menu,
+.boton-dashboard {
+    width: 100%;
+}
+
+.boton-menu:hover,
+.boton-dashboard:hover,
+.botones-centro button:hover {
+    background: var(--verde-oscuro);
+}
+
+.submenu {
+    position: relative;
+    z-index: 1005;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 8px;
+    padding: 7px;
+    background: var(--blanco);
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+}
+
+.submenu button,
+.opciones-ajustes button {
+    width: 100%;
+    padding: 11px 8px;
+    border: 0;
+    border-radius: 5px;
+    background: #edf4e9;
+    color: var(--verde-oscuro);
+    font-size: 12px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.submenu button:hover,
+.opciones-ajustes button:hover {
+    background: #d1e4c8;
+}
+
+.submenu button:last-child {
+    color: #9f2525;
+}
+
+.submenu button:last-child:hover {
+    background: #f8e5e5;
+}
+
+.botones-centro {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.botones-centro button,
+.boton-dashboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    min-height: 76px;
+    padding: 8px 5px;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    background: var(--verde-principal);
+    color: var(--blanco);
+    font-family: inherit;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color .2s, transform .2s, box-shadow .2s;
+}
+
+.botones-centro button {
+    flex: 1;
+    min-width: 0;
+}
+
+.botones-centro button:hover,
+.boton-dashboard:hover {
+    background: var(--verde-oscuro);
+    box-shadow: 0 3px 8px rgba(49, 87, 44, .16);
+}
+
+.botones-centro button:active,
+.boton-dashboard:active {
+    transform: scale(.98);
+}
+
+.icono-navegacion {
+    display: block;
+    font-size: 24px;
+    line-height: 1.1;
+}
+
+.texto-navegacion {
+    display: block;
+    max-width: 100%;
+    font-size: 10px;
+    line-height: 1.25;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+/* SECCIONES GENERALES */
+
+.seccion {
+    min-width: 0;
+    padding: 20px;
+    border: 1px solid #e1e9dc;
+    border-radius: 8px;
+    background: var(--blanco);
+}
+
+.seccion h2 {
+    margin: 0 0 20px;
+    color: var(--verde-principal);
+    font-size: 21px;
+}
+
+.seccion-vehiculos,
+.seccion-clientes,
+.seccion-produccion {
+    padding: 18px;
+}
+
+.barra-vehiculos {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.barra-vehiculos h2 {
+    margin: 0;
+    color: var(--verde-principal);
+    font-size: 20px;
+}
+
+.barra-titulo-clientes-centrado {
+    justify-content: center;
+    text-align: center;
+}
+
+.texto-instruccion {
+    margin: -8px 0 18px;
+    color: #596456;
+    font-size: 13px;
+}
+
+/* VEHÍCULOS */
+
+.boton-registrar-camion {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-height: 42px;
+    padding: 10px 12px;
+    border: none;
+    border-radius: 6px;
+    background: var(--verde-principal);
+    color: var(--blanco);
+    font-size: 11px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.boton-registrar-camion:hover {
+    background: var(--verde-oscuro);
+}
+
+.icono-mas {
+    font-size: 20px;
+    line-height: 1;
+}
+
+.icono-camion-registro {
+    font-size: 22px;
+    line-height: 1;
+}
+
+#listaVehiculos,
+#listaVehiculosClientes,
+#listaVehiculosProduccion,
+#listaVehiculosFinanzas,
+.lista-camiones-reportes {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+    align-items: stretch;
+}
+
+.tarjeta-vehiculo {
+    min-width: 0;
+    min-height: 225px;
+    padding: 12px 8px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: 1px solid var(--borde);
+    border-radius: 9px;
+    background: var(--blanco);
+    box-shadow: 0 2px 6px rgba(32, 63, 32, .07);
+    overflow-wrap: anywhere;
+    overflow: visible;
+}
+
+.tarjeta-vehiculo.inactivo {
+    border-color: #c58c8c;
+    background: #f8f3f3;
+}
+
+.numero-camion {
+    margin: 0 0 8px;
+    color: var(--verde-oscuro);
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.icono-camion-tarjeta {
+    margin: 0 0 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    line-height: 1.2;
+}
+
+.dato-camion {
+    width: 100%;
+    margin: 3px 0;
+    color: var(--texto);
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.nombre-chofer-camion {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.ayudantes-camion {
+    color: #485747;
+    font-size: 11px;
+}
+
+.placa-camion {
+    font-weight: 700;
+    letter-spacing: .4px;
+}
+
+.ruta-camion {
+    color: var(--verde-principal);
+    font-weight: bold;
+}
+
+.acciones-tarjeta {
+    position: relative;
+    width: calc(100% + 16px);
+    min-height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    margin-top: auto;
+    padding: 6px 8px;
+    background: var(--verde-principal);
+    border-radius: 0 0 8px 8px;
+}
+
+.boton-icono-tarjeta {
+    width: 32px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 0;
+    border-radius: 5px;
+    background: transparent;
+}
+
+.boton-icono-tarjeta:hover {
+    background: rgba(255, 255, 255, .15);
+}
+
+.boton-icono-tarjeta svg {
+    width: 23px;
+    height: 23px;
+    display: block;
+}
+
+.boton-editar-icono .icono-lapiz {
+    display: inline-block;
+    font-family: "Segoe UI Emoji", "Apple Color Emoji", sans-serif;
+    font-size: 23px;
+    line-height: 1;
+}
+
+.boton-opciones-icono svg {
+    color: var(--blanco);
+}
+
+.menu-opciones-camion {
+    position: absolute;
+    right: 5px;
+    bottom: calc(100% + 5px);
+    z-index: 50;
+    min-width: 115px;
+    padding: 5px;
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    background: var(--blanco);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .16);
+}
+
+.boton-eliminar-camion {
+    width: 100%;
+    padding: 9px 10px;
+    border: 0;
+    border-radius: 4px;
+    background: var(--blanco);
+    color: #b42323;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.boton-eliminar-camion:hover {
+    background: #fff0f0;
+}
+
+.mensaje-sin-camiones {
+    grid-column: 1 / -1;
+    margin: 0;
+    padding: 28px 12px;
+    border: 1px dashed var(--borde);
+    border-radius: 8px;
+    color: var(--verde-principal);
+    text-align: center;
+}
+
+/* TARJETAS PARA ELEGIR CAMIÓN */
+
+.tarjeta-cliente-camion,
+.tarjeta-produccion-camion {
+    min-height: 245px;
+}
+
+.acciones-tarjeta-clientes,
+.acciones-tarjeta-produccion {
+    width: calc(100% + 16px);
+    margin-top: auto;
+    padding: 8px;
+    background: var(--verde-principal);
+    border-radius: 0 0 8px 8px;
+}
+
+.boton-ingresar-clientes {
+    width: 100%;
+    min-height: 32px;
+    border: 1px solid rgba(255, 255, 255, .5);
+    border-radius: 5px;
+    background: var(--verde-principal);
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.boton-ingresar-clientes:hover {
+    background: var(--verde-oscuro);
+}
+
+.tarjeta-produccion-camion .acciones-tarjeta-produccion {
+    display: block;
+}
+
+.tarjeta-produccion-camion .boton-ingresar-clientes {
+    width: 100%;
+}
+
+/* CABECERAS DE CLIENTES */
+
+.barra-clientes-camion {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--borde);
+}
+
+.datos-cabecera-clientes {
+    min-width: 0;
+}
+
+.barra-clientes-camion h2 {
+    margin: 0 0 4px;
+    font-size: 18px;
+}
+
+.barra-clientes-camion p {
+    margin: 0;
+    color: #596456;
+    font-size: 12px;
+    overflow-wrap: anywhere;
+}
+.barra-cabecera-reportes .datos-cabecera-clientes p{display:flex;flex-direction:column;gap:1px;line-height:1.1}
+
+.boton-volver-clientes {
+    width: 39px;
+    height: 39px;
+    flex: 0 0 39px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 1px solid var(--borde);
+    border-radius: 7px;
+    background: #edf4e9;
+    color: var(--verde-oscuro);
+    font-size: 22px;
+}
+
+.boton-volver-clientes:hover {
+    background: #d1e4c8;
+}
+
+/* FORMULARIO DE CLIENTES */
+
+.formulario-cliente-admin {
+    max-width: 680px;
+    padding: 10px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    background: #f8fbf6;
+}
+
+.campos-cliente-admin {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(130px, .8fr);
+    gap: 9px;
+}
+
+.campos-cliente-admin label {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    color: var(--verde-oscuro);
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.campos-cliente-admin input {
+    width: 100%;
+    min-width: 0;
+    min-height: 34px;
+    padding: 7px 9px;
+    border: 1px solid var(--borde);
+    border-radius: 5px;
+    background: white;
+    color: var(--texto);
+    font-size: 12px;
+}
+
+.campos-cliente-admin input:focus,
+.busqueda-clientes input:focus {
+    outline: 2px solid #8eb183;
+    outline-offset: 1px;
+}
+
+.acciones-formulario-cliente {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 9px;
+}
+
+.boton-guardar-cliente,
+.boton-cancelar-edicion {
+    min-height: 32px;
+    padding: 7px 14px;
+    border: 0;
+    border-radius: 5px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.boton-guardar-cliente {
+    background: var(--verde-principal);
+    color: white;
+}
+
+.boton-guardar-cliente:hover {
+    background: var(--verde-oscuro);
+}
+
+.boton-cancelar-edicion {
+    background: #e3eae0;
+    color: var(--verde-oscuro);
+}
+
+.mensaje-clientes-admin {
+    min-height: 14px;
+    margin: 5px 0 0;
+    color: var(--verde-principal);
+    font-size: 11px;
+    font-weight: bold;
+}
+
+
+/* MICRÓFONO Y BUSCADOR */
+
+.zona-busqueda-clientes {
+    width: 100%;
+    max-width: 350px;
+    display: grid;
+    grid-template-columns: 38px minmax(0, 1fr);
+    grid-template-rows: 36px auto;
+    align-items: center;
+    column-gap: 7px;
+    margin: 12px 0;
+}
+
+.boton-microfono-clientes {
+    grid-column: 1;
+    grid-row: 1;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 1px solid var(--borde);
+    border-radius: 7px;
+    background: white;
+    color: var(--verde-principal);
+    font-size: 21px;
+    line-height: 1;
+    transition: background-color .2s, color .2s, transform .2s;
+}
+
+.boton-microfono-clientes:hover {
+    background: #dcebd5;
+    color: #203f20;
+}
+
+.boton-microfono-clientes:active {
+    transform: scale(.94);
+}
+
+.boton-microfono-clientes.escuchando {
+    background: #dcebd5;
+    color: #203f20;
+    box-shadow: inset 0 0 0 2px #8eb183;
+}
+
+.boton-microfono-clientes.escuchando:hover {
+    background: #c9e1be;
+}
+
+.busqueda-clientes {
+    grid-column: 2;
+    grid-row: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 36px;
+    align-items: center;
+    width: 100%;
+    min-width: 0;
+    min-height: 36px;
+    border: 1px solid var(--borde);
+    border-radius: 7px;
+    background: white;
+}
+
+.busqueda-clientes input {
+    width: 100%;
+    min-width: 0;
+    height: 34px;
+    padding: 7px 9px;
+    border: 0;
+    border-radius: 7px 0 0 7px;
+    outline: none;
+    background: transparent;
+    color: var(--texto);
+    font-size: 12px;
+}
+
+.boton-lupa-clientes {
+    width: 35px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 0 7px 7px 0;
+    background: white;
+    color: var(--verde-principal);
+}
+
+.boton-lupa-clientes:hover {
+    background: #edf4e9;
+}
+
+.boton-lupa-clientes svg {
+    width: 20px;
+    height: 20px;
+}
+
+.estado-voz-clientes {
+    grid-column: 2;
+    grid-row: 2;
+    min-height: 13px;
+    margin: 3px 2px 0;
+    color: #596456;
+    font-size: 10px;
+}
+
+.zona-busqueda-produccion {
+    width: min(100%, 350px);
+    margin: 14px auto;
+    justify-self: center;
+}
+
+#panelClientesProduccion .zona-busqueda-clientes {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* LISTADO DE CLIENTES */
+
+.encabezado-lista-clientes {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin: 12px 0 9px;
+}
+
+.encabezado-lista-clientes h3 {
+    margin: 0;
+    color: var(--verde-principal);
+    font-size: 14px;
+}
+
+.encabezado-lista-clientes span {
+    color: #596456;
+    font-size: 12px;
+}
+
+.lista-clientes-admin {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.fila-cliente-admin {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 12px;
+    border: 1px solid #e1e9dc;
+    border-radius: 7px;
+    background: white;
+}
+
+.datos-fila-cliente {
+    min-width: 0;
+}
+
+.nombre-fila-cliente {
+    margin: 0 0 4px;
+    color: var(--verde-oscuro);
+    font-size: 13px;
+    font-weight: bold;
+    overflow-wrap: anywhere;
+}
+
+.precio-fila-cliente {
+    margin: 0;
+    color: #53644e;
+    font-size: 12px;
+}
+
+.acciones-fila-cliente {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.boton-editar-cliente,
+.boton-eliminar-cliente {
+    width: 34px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    background: #f6faf3;
+    font-size: 17px;
+}
+
+.boton-editar-cliente:hover {
+    background: #e7f1e1;
+}
+
+.boton-eliminar-cliente {
+    color: #b42323;
+    border-color: #e5c0c0;
+}
+
+.boton-eliminar-cliente:hover {
+    background: #fff0f0;
+}
+
+.lista-clientes-vacia {
+    padding: 20px 12px;
+    border: 1px dashed var(--borde);
+    border-radius: 7px;
+    color: #596456;
+    font-size: 13px;
+    text-align: center;
+}
+/* PRODUCCIÓN: LISTA DE CLIENTES Y TOTAL */
+
+#listaClientesProduccion {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Una sola tarjeta por cliente */
+
+#listaClientesProduccion .fila-cliente-produccion {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(120px, 160px);
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    min-width: 0;
+    padding: 12px 14px;
+    border: 1px solid #e1e9dc;
+    border-radius: 8px;
+    background: #ffffff;
+    transition: border-color .2s, box-shadow .2s, background-color .2s;
+}
+
+#listaClientesProduccion .fila-cliente-produccion:hover {
+    border-color: var(--borde);
+    background: #fbfdf9;
+    box-shadow: 0 2px 6px rgba(32, 63, 32, .07);
+}
+
+/* Nombre del cliente: libre a la izquierda, sin cuadro propio */
+
+#listaClientesProduccion .datos-fila-cliente {
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+}
+
+#listaClientesProduccion .boton-nombre-produccion {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 5px 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: var(--verde-oscuro);
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 1.4;
+    text-align: left;
+    overflow-wrap: anywhere;
+}
+
+#listaClientesProduccion .boton-nombre-produccion:hover {
+    background: transparent;
+    color: var(--verde-principal);
+    text-decoration: underline;
+}
+
+#listaClientesProduccion .boton-nombre-produccion:focus-visible {
+    outline: 2px solid #8eb183;
+    outline-offset: 3px;
+    border-radius: 3px;
+}
+
+/* Total: etiqueta arriba y cantidad debajo, sin recuadro interior */
+
+#listaClientesProduccion .total-cliente-lista-produccion {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 4px;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    text-align: right;
+}
+
+#listaClientesProduccion .etiqueta-litros-cliente-produccion {
+    display: block;
+    margin: 0;
+    color: #596456;
+    font-size: 9px;
+    font-weight: 600;
+    line-height: 1.3;
+    text-align: right;
+    text-transform: uppercase;
+}
+
+#listaClientesProduccion .valor-litros-cliente-produccion {
+    display: block;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--verde-principal);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+    text-align: right;
+}
+
+#listaClientesProduccion .cantidad-registros-cliente-produccion {
+    display: block;
+    color: #596456;
+    font-size: 11px;
+    line-height: 1.3;
+    text-align: right;
+}
+
+/* Ocultar precio solamente en la lista de Producción */
+
+#listaClientesProduccion .precio-fila-cliente {
+    display: none !important;
+}
+/* VISTA DE PRODUCCIÓN DE UN CLIENTE */
+
+.panel-tablas-produccion {
+    width: 100%;
+    min-width: 0;
+}
+
+.barra-tablas-produccion {
+    margin-bottom: 15px;
+}
+
+.contenido-tablas-produccion {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(160px, .3fr);
+    align-items: start;
+    gap: 15px;
+    width: 100%;
+    min-width: 0;
+}
+
+.identificacion-cliente-produccion {
+    display: none !important;
+}
+
+.zona-tablas-quincenas {
+    grid-column: 1;
+    grid-row: 1;
+    width: 100%;
+    min-width: 0;
+}
+
+.encabezado-quincenas {
+    margin-bottom: 12px;
+}
+
+.encabezado-quincenas h3 {
+    margin: 0 0 5px;
+    color: var(--verde-principal);
+    font-size: 15px;
+}
+
+.encabezado-quincenas p {
+    margin: 0;
+    color: #596456;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.contenedor-tablas-quincenas {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+    min-width: 0;
+}
+
+.mensaje-sin-tablas {
+    margin: 0;
+    padding: 20px 12px;
+    border: 1px dashed var(--borde);
+    border-radius: 7px;
+    color: #596456;
+    font-size: 12px;
+    text-align: center;
+}
+
+.tarjeta-quincena-produccion {
+    width: 100%;
+    min-width: 0;
+    padding: 11px;
+    border: 1px solid var(--borde);
+    border-radius: 9px;
+    background: #f8fbf6;
+    box-shadow: 0 2px 5px rgba(32, 63, 32, .05);
+    cursor: pointer;
+    transition: border-color .2s, background-color .2s, box-shadow .2s;
+}
+
+.tarjeta-quincena-produccion.quincena-seleccionada {
+    border: 2px solid var(--verde-principal);
+    background: #edf4e9;
+    box-shadow: 0 0 0 2px rgba(49, 87, 44, .08);
+}
+
+.tarjeta-quincena-produccion input {
+    cursor: text;
+}
+
+.encabezado-tabla-quincena {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 10px;
+    padding: 10px 12px;
+    border-radius: 6px;
+    background: var(--verde-principal);
+    color: white;
+}
+
+.encabezado-tabla-quincena h3,
+.encabezado-tabla-quincena h4 {
+    margin: 0;
+    color: white;
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+.encabezado-tabla-quincena p,
+.encabezado-tabla-quincena span {
+    margin: 3px 0 0;
+    color: #f0f6ec;
+    font-size: 11px;
+}
+
+.rejilla-dias-produccion {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 6px;
+    width: 100%;
+    min-width: 0;
+}
+
+.casilla-dia-produccion {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 5px;
+    min-width: 0;
+    padding: 7px 4px;
+    border: 1px solid #d7e3d0;
+    border-radius: 6px;
+    background: white;
+    text-align: center;
+}
+
+.encabezado-dia-produccion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    min-height: 34px;
+}
+
+.numero-dia-produccion {
+    color: var(--verde-oscuro);
+    font-size: 13px;
+    font-weight: 900;
+}
+
+.nombre-dia-produccion {
+    color: #596456;
+    font-size: 10px;
+    font-weight: normal;
+    text-transform: capitalize;
+}
+
+.etiqueta-litros-dia {
+    display: block;
+    margin-top: 1px;
+    color: #596456;
+    font-size: 9px;
+}
+
+.entrada-litros-produccion {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    height: 32px;
+    padding: 4px 2px;
+    border: 1px solid var(--borde);
+    border-radius: 5px;
+    background: #fbfdf9;
+    color: var(--verde-oscuro);
+    font-size: 12px;
+    text-align: center;
+}
+
+.entrada-litros-produccion:focus {
+    outline: 2px solid #8eb183;
+    outline-offset: 0;
+    border-color: var(--verde-principal);
+}
+
+.entrada-litros-produccion:disabled {
+    border-color: transparent;
+    background: transparent;
+    color: var(--texto);
+    opacity: 1;
+    cursor: default;
+}
+
+.entrada-litros-produccion::-webkit-inner-spin-button,
+.entrada-litros-produccion::-webkit-outer-spin-button {
+    margin: 0;
+    -webkit-appearance: none;
+}
+
+.entrada-litros-produccion[type="number"] {
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+
+.pie-tabla-quincena {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-top: 10px;
+    padding-top: 9px;
+    border-top: 1px solid #dce6d6;
+}
+
+.resumen-quincena {
+    color: var(--verde-principal);
+    font-size: 12px;
+    font-weight: 800;
+}
+
+/* TOTAL Y BOTONES DE LAS TABLAS */
+
+.resumen-total-produccion {
+    position: sticky;
+    top: 12px;
+    grid-column: 2;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 9px;
+    min-width: 0;
+    padding: 11px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    background: white;
+}
+
+.tarjeta-total-produccion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: 0;
+    padding: 13px 7px;
+    border: 1px solid var(--borde);
+    border-radius: 7px;
+    background: #edf4e9;
+    text-align: center;
+}
+
+.tarjeta-total-produccion #nombreClienteTablasProduccion {
+    display: block;
+    width: 100%;
+    margin: 0 0 4px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--verde-oscuro);
+    font-size: 15px;
+    font-weight: 800;
+    line-height: 1.35;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+.tarjeta-total-produccion #datosClienteTablasProduccion {
+    width: 100%;
+    margin: 0 0 4px;
+    color: #596456;
+    font-size: 11px;
+    line-height: 1.4;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+.etiqueta-total-produccion {
+    display: block;
+    margin: 0;
+    color: var(--verde-principal);
+    font-size: 11px;
+    font-weight: 800;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.tarjeta-total-produccion strong {
+    display: block;
+    max-width: 100%;
+    color: var(--verde-principal);
+    font-size: clamp(21px, 2vw, 29px);
+    font-weight: 900;
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+}
+
+.unidad-total-produccion {
+    color: #596456;
+    font-size: 11px;
+}
+
+.periodo-total-produccion {
+    margin: 0;
+    color: #596456;
+    font-size: 11px;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.acciones-tabla-produccion {
+    display: grid;
+    grid-template-columns: minmax(38px, .65fr) minmax(0, 1.35fr);
+    align-items: stretch;
+    gap: 7px;
+    width: 100%;
+}
+
+.boton-editar-produccion,
+.boton-guardar-produccion {
+    min-width: 0;
+    min-height: 39px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 7px 5px;
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.boton-editar-produccion {
+    background: #edf4e9;
+    color: var(--verde-oscuro);
+    font-size: 20px;
+}
+
+.boton-editar-produccion:hover {
+    background: #dcebd5;
+}
+
+.boton-guardar-produccion {
+    border-color: var(--verde-principal);
+    background: var(--verde-principal);
+    color: white;
+}
+
+.boton-guardar-produccion:hover {
+    background: var(--verde-oscuro);
+}
+
+.boton-editar-produccion:disabled,
+.boton-guardar-produccion:disabled {
+    opacity: .55;
+    cursor: not-allowed;
+}
+
+.mensaje-guardar-produccion {
+    min-height: 14px;
+    margin: 0;
+    color: var(--verde-principal);
+    font-size: 10px;
+    font-weight: bold;
+    line-height: 1.4;
+    text-align: center;
+}
+
+/* HISTORIAL */
+
+.historial-produccion {
+    width: 100%;
+    min-width: 0;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 2px solid var(--borde);
+}
+
+.encabezado-historial-produccion {
+    margin-bottom: 12px;
+}
+
+.encabezado-historial-produccion h3 {
+    margin: 0 0 6px;
+    color: var(--verde-principal);
+    font-size: 15px;
+}
+
+.encabezado-historial-produccion p {
+    margin: 0;
+    color: #596456;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+#contenedorHistorialProduccion {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    min-width: 0;
+}
+
+#contenedorHistorialProduccion .tarjeta-quincena-produccion {
+    background: #f6f8f4;
+}
+
+.mensaje-guardado-quincena,
+.mensaje-produccion {
+    margin: 10px 0;
+    color: var(--verde-principal);
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* COMPATIBILIDAD CON TABLAS ANTERIORES */
+
+.cabecera-tablas-produccion {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--borde);
+}
+
+.datos-cliente-tablas {
+    min-width: 0;
+}
+
+.datos-cliente-tablas h2 {
+    margin: 0 0 4px;
+    color: var(--verde-principal);
+    font-size: 19px;
+    overflow-wrap: anywhere;
+}
+
+.datos-cliente-tablas p {
+    margin: 0;
+    color: #596456;
+    font-size: 12px;
+}
+
+.boton-volver-tablas {
+    width: 39px;
+    height: 39px;
+    flex: 0 0 39px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--borde);
+    border-radius: 7px;
+    background: #edf4e9;
+    color: var(--verde-oscuro);
+    font-size: 23px;
+}
+
+.boton-volver-tablas:hover {
+    background: #d1e4c8;
+}
+
+.lista-tablas-quincena {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    width: 100%;
+}
+
+.bloque-quincena {
+    width: 100%;
+    min-width: 0;
+    padding: 13px;
+    border: 1px solid var(--borde);
+    border-radius: 9px;
+    background: #f8fbf6;
+    box-shadow: 0 2px 5px rgba(32, 63, 32, .06);
+}
+
+.cabecera-quincena {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.titulo-quincena {
+    margin: 0;
+    color: var(--verde-principal);
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.periodo-quincena {
+    margin: 4px 0 0;
+    color: #596456;
+    font-size: 12px;
+}
+
+.estado-quincena {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 9px;
+    border: 1px solid var(--borde);
+    border-radius: 20px;
+    background: #edf4e9;
+    color: var(--verde-oscuro);
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.estado-quincena.completada {
+    border-color: #b8cdb0;
+    background: #dcebd5;
+    color: var(--verde-principal);
+}
+
+.estado-quincena.historica {
+    border-color: #d5dcd1;
+    background: #edf0eb;
+    color: #596456;
+}
+
+.contenido-quincena {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 145px;
+    align-items: start;
+    gap: 13px;
+    width: 100%;
+    min-width: 0;
+}
+
+.contenedor-tabla-litros {
+    width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+    border: 1px solid var(--borde);
+    border-radius: 7px;
+    background: white;
+}
+
+.tabla-litros-quincena {
+    width: 100%;
+    min-width: 490px;
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: fixed;
+    color: var(--texto);
+    font-size: 11px;
+}
+
+.tabla-litros-quincena th,
+.tabla-litros-quincena td {
+    min-width: 29px;
+    padding: 6px 3px;
+    border-right: 1px solid #dce6d6;
+    border-bottom: 1px solid #dce6d6;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.tabla-litros-quincena tr > *:last-child {
+    border-right: 0;
+}
+
+.tabla-litros-quincena tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.tabla-litros-quincena thead th {
+    background: var(--verde-principal);
+    color: white;
+    font-weight: bold;
+}
+
+.tabla-litros-quincena .celda-etiqueta {
+    width: 86px;
+    min-width: 86px;
+    background: #edf4e9;
+    color: var(--verde-oscuro);
+    font-weight: bold;
+    text-align: left;
+    padding-left: 8px;
+}
+
+.tabla-litros-quincena .celda-fecha {
+    background: #f0f6ec;
+    color: var(--verde-oscuro);
+    font-weight: bold;
+}
+
+.fecha-numero {
+    display: block;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.fecha-dia {
+    display: block;
+    margin-top: 3px;
+    color: #596456;
+    font-size: 9px;
+    font-weight: normal;
+    text-transform: lowercase;
+}
+
+.entrada-litros {
+    display: block;
+    width: 100%;
+    min-width: 25px;
+    height: 31px;
+    padding: 3px 1px;
+    border: 1px solid #d4e0ce;
+    border-radius: 4px;
+    background: #fbfdf9;
+    color: var(--verde-oscuro);
+    font-size: 11px;
+    text-align: center;
+}
+
+.entrada-litros:focus {
+    outline: 2px solid #8eb183;
+    outline-offset: 0;
+    border-color: var(--verde-principal);
+}
+
+.entrada-litros:disabled {
+    border-color: transparent;
+    background: transparent;
+    color: var(--texto);
+    opacity: 1;
+    cursor: default;
+}
+
+.entrada-litros::-webkit-inner-spin-button,
+.entrada-litros::-webkit-outer-spin-button {
+    margin: 0;
+    -webkit-appearance: none;
+}
+
+.entrada-litros[type="number"] {
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+
+.panel-total-quincena {
+    position: sticky;
+    top: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 9px;
+    min-width: 0;
+    padding: 11px 9px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    background: white;
+}
+
+.etiqueta-total-litros {
+    margin: 0;
+    color: var(--verde-principal);
+    font-size: 11px;
+    font-weight: 800;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.valor-total-litros {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 52px;
+    padding: 8px 4px;
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    background: #edf4e9;
+    color: var(--verde-principal);
+    font-size: 22px;
+    font-weight: 900;
+    overflow-wrap: anywhere;
+    text-align: center;
+}
+
+.unidad-total-litros {
+    display: block;
+    color: #596456;
+    font-size: 10px;
+    font-weight: normal;
+    text-align: center;
+}
+
+.acciones-total-quincena {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+    width: 100%;
+}
+
+.boton-editar-quincena,
+.boton-guardar-quincena {
+    width: 100%;
+    min-width: 0;
+    min-height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 7px 5px;
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.boton-editar-quincena {
+    background: #edf4e9;
+    color: var(--verde-oscuro);
+}
+
+.boton-editar-quincena:hover {
+    background: #dcebd5;
+}
+
+.boton-guardar-quincena {
+    border-color: var(--verde-principal);
+    background: var(--verde-principal);
+    color: white;
+}
+
+.boton-guardar-quincena:hover {
+    background: var(--verde-oscuro);
+}
+
+.boton-editar-quincena:disabled,
+.boton-guardar-quincena:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+}
+
+.mensaje-sin-historial {
+    margin: 0;
+    padding: 18px 12px;
+    border: 1px dashed var(--borde);
+    border-radius: 7px;
+    color: #596456;
+    font-size: 12px;
+    text-align: center;
+}
+
+.seccion-historial-quincenas {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 2px solid var(--borde);
+}
+
+.seccion-historial-quincenas h3 {
+    margin: 0 0 12px;
+    color: var(--verde-principal);
+    font-size: 16px;
+}
+
+.lista-historial-quincenas {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* VENTANA LATERAL DE CONFIGURACIÓN */
+
+.fondo-ventana {
+    position: fixed;
+    top: 110px;
+    left: 15%;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    background: transparent;
+    pointer-events: none;
+}
+
+.ventana-lateral {
+    position: absolute;
+    top: 12px;
+    left: 16px;
+    width: min(300px, calc(100vw - 210px));
+    max-height: calc(100vh - 135px);
+    overflow-y: auto;
+    padding: 12px;
+    border: 1px solid var(--borde);
+    border-top: 3px solid var(--verde-principal);
+    border-radius: 7px;
+    background: var(--blanco);
+    box-shadow: 0 4px 14px rgba(32, 63, 32, .15);
+    pointer-events: auto;
+}
+
+.cabecera-ventana {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 12px;
+    padding-bottom: 9px;
+    border-bottom: 1px solid var(--borde);
+}
+
+.cabecera-ventana h2 {
+    margin: 0;
+    color: var(--verde-principal);
+    font-size: 16px;
+}
+
+.boton-cerrar {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    border: 0;
+    border-radius: 5px;
+    background: #e3eae0;
+    color: var(--verde-oscuro);
+    font-size: 21px;
+}
+
+/* FORMULARIOS DE CONFIGURACIÓN */
+
+.formulario-ventana {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.formulario-ventana > label {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    color: var(--verde-oscuro);
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.formulario-ventana input:not([type="checkbox"]) {
+    width: 100%;
+    min-height: 34px;
+    padding: 7px;
+    border: 1px solid var(--borde);
+    border-radius: 5px;
+    background: #fcfdfb;
+    font-size: 12px;
+}
+
+.campo-contrasena{position:relative;display:block;width:100%}
+.formulario-ventana .campo-contrasena input{box-sizing:border-box;padding-right:42px}
+.boton-ver-contrasena{position:absolute;top:50%;right:5px;display:grid;width:30px;height:30px;place-items:center;padding:5px;border:0;border-radius:4px;background:transparent;color:var(--verde-principal);cursor:pointer;transform:translateY(-50%)}
+.boton-ver-contrasena:hover,.boton-ver-contrasena:focus-visible{background:var(--verde-fondo);outline:2px solid var(--verde-principal);outline-offset:1px}
+.boton-ver-contrasena svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.8}
+
+.formulario-ventana input[type="file"] {
+    min-height: auto;
+    padding: 6px;
+    font-size: 11px;
+}
+
+.formulario-ventana input[type="color"] {
+    align-self: center;
+    box-sizing: border-box;
+    width: 54px;
+    min-width: 54px;
+    height: 54px;
+    min-height: 54px;
+    padding: 3px;
+    border-radius: 50%;
+    appearance: none;
+    cursor: pointer;
+}
+
+.formulario-ventana input[type="color"]::-webkit-color-swatch-wrapper{padding:0}
+.formulario-ventana input[type="color"]::-webkit-color-swatch{border:0;border-radius:50%}
+.formulario-ventana input[type="color"]::-moz-color-swatch{border:0;border-radius:50%}
+
+.formulario-selector-color{width:min(100%,300px);gap:11px}
+.formulario-selector-color #colorEmpresaInput{display:none!important}
+.area-color-seleccion{position:relative;width:100%;height:150px;overflow:hidden;border:1px solid #d4d8d0;border-radius:2px;background-color:hsl(120 100% 50%);touch-action:none;cursor:crosshair}
+.indicador-area-color{position:absolute;width:14px;height:14px;border:2px solid #fff;border-radius:50%;box-shadow:0 0 0 1px #202820;transform:translate(-50%,-50%);pointer-events:none}
+.control-tono-color{width:100%!important;height:16px!important;min-height:16px!important;margin:0;padding:0!important;border:0!important;border-radius:0!important;appearance:none;background:linear-gradient(to right,#f00,#ff0,#0f0,#0ff,#00f,#f0f,#f00)!important;cursor:pointer}
+.control-tono-color::-webkit-slider-thumb{width:15px;height:15px;border:2px solid #fff;border-radius:50%;background:var(--verde-principal);box-shadow:0 0 2px #333;appearance:none}
+.control-tono-color::-moz-range-thumb{width:12px;height:12px;border:2px solid #fff;border-radius:50%;background:var(--verde-principal);box-shadow:0 0 2px #333}
+.controles-rgb-color{display:grid;grid-template-columns:36px repeat(3,minmax(0,1fr));align-items:start;gap:8px}
+.muestra-color-seleccion{width:32px;height:32px;margin-top:2px;border:1px solid #ccd5c8;border-radius:50%;background:#246b38}
+.controles-rgb-color label{display:flex;flex-direction:column;gap:3px;color:var(--texto);font-size:11px;text-align:center}
+.formulario-ventana .controles-rgb-color input{box-sizing:border-box;width:100%;min-width:0;min-height:34px;padding:5px 2px;text-align:center}
+.formulario-selector-color .acciones{margin-top:2px}
+.formulario-selector-color .boton-guardar{min-height:38px}
+#precioClienteAdmin{-moz-appearance:textfield;appearance:textfield}
+#precioClienteAdmin::-webkit-inner-spin-button,#precioClienteAdmin::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+#precioProveedorDescarga{-moz-appearance:textfield;appearance:textfield}
+#precioProveedorDescarga::-webkit-inner-spin-button,#precioProveedorDescarga::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+
+.opciones-ajustes {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.opciones-ajustes button {
+    padding: 9px 7px;
+    font-size: 11px;
+}
+
+.acciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 8px;
+}
+
+.boton-guardar,
+.boton-atras {
+    flex: 1;
+    min-width: 85px;
+    padding: 9px 11px;
+    border: 0;
+    border-radius: 5px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.boton-guardar {
+    background: var(--verde-principal);
+    color: white;
+}
+
+.boton-guardar:hover {
+    background: var(--verde-oscuro);
+}
+
+.boton-atras {
+    background: #e3eae0;
+    color: var(--verde-oscuro);
+}
+
+.boton-atras:hover {
+    background: #d1ddcc;
+}
+
+.mensaje-ventana {
+    min-height: 16px;
+    margin: 0;
+    color: var(--verde-principal);
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 1.4;
+}
+
+.texto-ayuda {
+    color: #596456;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+/* LOGO Y DASHBOARD */
+
+.vista-logo {
+    width: 100%;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+    overflow: hidden;
+    border: 1px dashed var(--borde);
+    border-radius: 6px;
+    background: #f6faf3;
+}
+
+.vista-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.indicadores {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin: 12px 0;
+}
+
+.indicadores article {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px;
+    border-radius: 7px;
+    background: var(--verde-fondo);
+}
+
+.indicadores span {
+    font-size: 13px;
+}
+
+.indicadores strong {
+    color: var(--verde-principal);
+    font-size: 25px;
+}
+
+/* CABECERA DEL PANEL DE PRODUCCIÓN */
+
+#panelClientesProduccion > .barra-clientes-camion {
+    display: grid;
+    grid-template-columns: 39px minmax(0, 1fr) 39px;
+    align-items: center;
+    gap: 12px;
+}
+
+#panelClientesProduccion > .barra-clientes-camion > .boton-volver-clientes {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start;
+}
+
+#panelClientesProduccion > .barra-clientes-camion > .datos-cabecera-clientes {
+    grid-column: 2;
+    grid-row: 1;
+    min-width: 0;
+    text-align: center;
+}
+
+#panelClientesProduccion > .barra-clientes-camion > .datos-cabecera-clientes h2,
+#panelClientesProduccion > .barra-clientes-camion > .datos-cabecera-clientes p {
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+/* ORDEN DE LA TARJETA TOTAL EN LA VISTA DE TABLAS */
+
+.resumen-total-produccion .tarjeta-total-produccion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+}
+
+.resumen-total-produccion .etiqueta-total-produccion {
+    order: 2;
+    display: block;
+    margin: 0;
+    color: var(--verde-principal);
+    font-size: 11px;
+    font-weight: 800;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.resumen-total-produccion .tarjeta-total-produccion strong {
+    order: 3;
+    display: block;
+    max-width: 100%;
+    color: var(--verde-principal);
+    font-size: clamp(21px, 2vw, 29px);
+    font-weight: 900;
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+}
+
+.tarjeta-total-produccion #nombreClienteTablasProduccion,
+.tarjeta-total-produccion #datosClienteTablasProduccion {
+    order: 1;
+}
+
+/* TABLETAS */
+
+@media (max-width: 1100px) {
+    .panel-lateral,
+    .panel-central {
+        padding: 10px;
+    }
+
+    #listaVehiculos,
+    #listaVehiculosClientes,
+    #listaVehiculosProduccion,
+    #listaVehiculosFinanzas,
+    .lista-camiones-reportes {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 9px;
+    }
+
+    .seccion-vehiculos,
+    .seccion-clientes,
+    .seccion-produccion {
+        padding: 12px;
+    }
+
+    .boton-registrar-camion {
+        font-size: 10px;
+    }
+
+    .contenido-tablas-produccion {
+        grid-template-columns: minmax(0, 1fr) minmax(145px, .32fr);
+        gap: 9px;
+    }
+
+    .resumen-total-produccion {
+        padding: 8px;
+    }
+
+    .rejilla-dias-produccion {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .contenido-quincena {
+        grid-template-columns: minmax(0, 1fr) 125px;
+        gap: 9px;
+    }
+
+    .panel-total-quincena {
+        padding: 8px 6px;
+    }
+
+    .valor-total-litros {
+        font-size: 19px;
+    }
+}
+
+/* PANTALLAS MEDIANAS */
+
+@media (max-width: 850px) {
+    .paneles-principales {
+        grid-template-columns: 1fr;
+    }
+
+    .panel-izquierdo,
+    .panel-central {
+        border: 0;
+        border-bottom: 1px solid var(--borde);
+    }
+
+    .panel-izquierdo {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .panel-izquierdo > .boton-menu {
+        width: 150px;
+        flex-shrink: 0;
+    }
+
+    .submenu {
+        width: 180px;
+        margin-top: 0;
+    }
+
+    .panel-derecho {
+        justify-content: flex-start;
+    }
+
+    .panel-derecho .boton-dashboard {
+        width: 150px;
+    }
+
+    .fondo-ventana {
+        top: 110px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(32, 63, 32, .08);
+    }
+
+    .ventana-lateral {
+        top: 12px;
+        left: 175px;
+        width: min(300px, calc(100vw - 190px));
+        max-height: calc(100vh - 135px);
+    }
+
+    .contenido-tablas-produccion {
+        grid-template-columns: minmax(0, 1fr) minmax(130px, .35fr);
+        gap: 8px;
+    }
+
+    .etiqueta-total-produccion {
+        font-size: 10px;
+    }
+
+    .acciones-tabla-produccion {
+        grid-template-columns: 38px minmax(0, 1fr);
+        gap: 5px;
+    }
+
+    .boton-editar-produccion,
+    .boton-guardar-produccion {
+        padding: 6px 3px;
+        font-size: 10px;
+    }
+
+    .rejilla-dias-produccion {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .contenido-quincena {
+        grid-template-columns: minmax(0, 1fr) 115px;
+    }
+
+    .tabla-litros-quincena {
+        min-width: 450px;
+    }
+}
+
+/* TELÉFONOS */
+
+@media (max-width: 560px) {
+    .encabezado {
+        grid-template-columns: 65px minmax(0, 1fr) 65px;
+        padding: 10px;
+        gap: 6px;
+    }
+
+    .zona-logo {
+        width: 60px;
+        height: 55px;
+    }
+
+    .marca-camweb {
+        font-size: 14px;
+    }
+
+    .titulo-empresa h1 {
+        font-size: 15px;
+    }
+
+    .titulo-empresa p {
+        font-size: 11px;
+    }
+
+    .panel-lateral,
+    .panel-central {
+        padding: 10px;
+    }
+
+    .botones-centro {
+        gap: 5px;
+    }
+
+    .botones-centro button {
+        min-height: 70px;
+        padding: 7px 2px;
+    }
+
+    .icono-navegacion {
+        font-size: 22px;
+    }
+
+    .texto-navegacion {
+        font-size: 8px;
+        line-height: 1.2;
+    }
+
+    .boton-dashboard .icono-navegacion {
+        font-size: 24px;
+    }
+
+    .boton-dashboard .texto-navegacion {
+        font-size: 10px;
+    }
+
+    .seccion {
+        padding: 14px;
+    }
+
+    .barra-vehiculos {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .boton-registrar-camion {
+        width: 100%;
+    }
+
+    #listaVehiculos,
+    #listaVehiculosClientes,
+    #listaVehiculosProduccion,
+    #listaVehiculosFinanzas,
+    .lista-camiones-reportes {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 9px;
+    }
+
+    .tarjeta-vehiculo {
+        min-height: 215px;
+    }
+
+    .barra-clientes-camion {
+        align-items: flex-start;
+        gap: 9px;
+    }
+
+    .barra-clientes-camion h2 {
+        font-size: 16px;
+    }
+
+    .formulario-cliente-admin {
+        max-width: 100%;
+        padding: 9px;
+    }
+
+    .campos-cliente-admin {
+        grid-template-columns: minmax(0, 1fr) minmax(100px, .8fr);
+        gap: 7px;
+    }
+
+    .campos-cliente-admin label {
+        font-size: 10px;
+    }
+
+    .campos-cliente-admin input {
+        padding: 7px;
+        font-size: 12px;
+    }
+
+    .zona-busqueda-clientes {
+        max-width: 100%;
+        grid-template-columns: 36px minmax(0, 1fr);
+        column-gap: 6px;
+    }
+
+    .boton-microfono-clientes {
+        width: 34px;
+        height: 36px;
+    }
+
+    .fila-cliente-admin {
+        padding: 9px;
+        gap: 7px;
+    }
+
+    .acciones-fila-cliente {
+        gap: 4px;
+    }
+
+    .boton-editar-cliente,
+    .boton-eliminar-cliente {
+        width: 31px;
+        height: 31px;
+    }
+
+    .fondo-ventana {
+        top: 95px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    .ventana-lateral {
+        top: 10px;
+        left: 10px;
+        width: min(300px, calc(100vw - 20px));
+        max-height: calc(100vh - 115px);
+        padding: 12px;
+    }
+    /* LISTA DE CLIENTES DE PRODUCCIÓN EN TELÉFONOS */
+
+    #listaClientesProduccion .fila-cliente-produccion {
+        grid-template-columns: minmax(0, 1fr) minmax(105px, 135px);
+        gap: 8px;
+        padding: 10px 11px;
+    }
+
+    #listaClientesProduccion .boton-nombre-produccion {
+        font-size: 12px;
+    }
+
+    #listaClientesProduccion .total-cliente-lista-produccion {
+        gap: 3px;
+    }
+
+    #listaClientesProduccion .etiqueta-litros-cliente-produccion {
+        font-size: 9px;
+    }
+
+    #listaClientesProduccion .valor-litros-cliente-produccion {
+        font-size: 18px;
+    }
+    
+    /* Tablas de producción en teléfonos */
+
+    .contenido-tablas-produccion {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 12px;
+    }
+
+    .zona-tablas-quincenas {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .resumen-total-produccion {
+        position: static;
+        grid-column: 1;
+        grid-row: 2;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        align-items: center;
+        gap: 8px;
+        padding: 9px;
+    }
+
+    .tarjeta-total-produccion {
+        grid-column: 1;
+        grid-row: 1 / span 2;
+        min-height: 86px;
+        padding: 8px;
+    }
+
+    .tarjeta-total-produccion #nombreClienteTablasProduccion {
+        font-size: 13px;
+    }
+
+    .tarjeta-total-produccion #datosClienteTablasProduccion {
+        font-size: 10px;
+    }
+
+    .tarjeta-total-produccion strong {
+        font-size: 23px;
+    }
+
+    .periodo-total-produccion {
+        grid-column: 2;
+        grid-row: 1;
+        font-size: 10px;
+    }
+
+    .acciones-tabla-produccion {
+        grid-column: 2;
+        grid-row: 2;
+        grid-template-columns: 40px minmax(0, 1fr);
+        gap: 6px;
+    }
+
+    .boton-editar-produccion,
+    .boton-guardar-produccion {
+        min-height: 38px;
+    }
+
+    .mensaje-guardar-produccion {
+        grid-column: 1 / -1;
+    }
+
+    .tarjeta-quincena-produccion,
+    .bloque-quincena {
+        padding: 9px;
+    }
+
+    .encabezado-tabla-quincena {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 9px;
+    }
+
+    .encabezado-tabla-quincena h3,
+    .encabezado-tabla-quincena h4 {
+        font-size: 14px;
+    }
+
+    .rejilla-dias-produccion {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 5px;
+    }
+
+    .casilla-dia-produccion {
+        padding: 6px 3px;
+    }
+
+    .numero-dia-produccion {
+        font-size: 12px;
+    }
+
+    .nombre-dia-produccion {
+        font-size: 9px;
+    }
+
+    .entrada-litros-produccion {
+        height: 32px;
+        font-size: 12px;
+    }
+
+    .cabecera-quincena {
+        align-items: flex-start;
+    }
+
+    .titulo-quincena {
+        font-size: 14px;
+    }
+
+    .contenido-quincena {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 10px;
+    }
+
+    .contenedor-tabla-litros {
+        width: 100%;
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+    }
+
+    .tabla-litros-quincena {
+        min-width: 500px;
+        font-size: 10px;
+    }
+
+    .tabla-litros-quincena th,
+    .tabla-litros-quincena td {
+        padding: 5px 2px;
+    }
+
+    .tabla-litros-quincena .celda-etiqueta {
+        width: 76px;
+        min-width: 76px;
+        padding-left: 5px;
+    }
+
+    .fecha-numero {
+        font-size: 11px;
+    }
+
+    .fecha-dia {
+        font-size: 8px;
+    }
+
+    .entrada-litros {
+        min-width: 27px;
+        height: 32px;
+        font-size: 11px;
+    }
+
+    .panel-total-quincena {
+        position: static;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(95px, .8fr);
+        align-items: center;
+        gap: 8px;
+        padding: 9px;
+    }
+
+    .etiqueta-total-litros {
+        grid-column: 1;
+        text-align: left;
+    }
+
+    .valor-total-litros {
+        grid-column: 2;
+        grid-row: 1 / span 2;
+        min-height: 48px;
+        font-size: 20px;
+    }
+
+    .unidad-total-litros {
+        grid-column: 1;
+        text-align: left;
+    }
+
+    .acciones-total-quincena {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+
+    .boton-editar-quincena,
+    .boton-guardar-quincena {
+        min-height: 38px;
+        font-size: 11px;
+    }
+
+    .cabecera-tablas-produccion {
+        gap: 9px;
+    }
+
+    .datos-cliente-tablas h2 {
+        font-size: 16px;
+    }
+
+    #panelClientesProduccion > .barra-clientes-camion {
+        grid-template-columns: 39px minmax(0, 1fr) 39px;
+        gap: 9px;
+        align-items: center;
+    }
+
+    #panelClientesProduccion > .barra-clientes-camion > .datos-cabecera-clientes {
+        grid-column: 2;
+        text-align: center;
+    }
+
+    #panelClientesProduccion > .barra-clientes-camion > .datos-cabecera-clientes h2,
+    #panelClientesProduccion > .barra-clientes-camion > .datos-cabecera-clientes p {
+        text-align: center;
+    }
+
+    #panelClientesProduccion .zona-busqueda-produccion {
+        width: min(100%, 350px);
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* TELÉFONOS MUY PEQUEÑOS */
+
+@media (max-width: 380px) {
+    .campos-cliente-admin {
+        grid-template-columns: 1fr;
+    }
+
+    .contenido-tablas-produccion {
+        gap: 10px;
+    }
+
+    .rejilla-dias-produccion {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .resumen-total-produccion {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    }
+
+    .tarjeta-total-produccion strong {
+        font-size: 20px;
+    }
+
+    .acciones-tabla-produccion {
+        grid-template-columns: 38px minmax(0, 1fr);
+    }
+
+    .boton-guardar-produccion {
+        font-size: 10px;
+    }
+
+    .panel-total-quincena {
+        grid-template-columns: minmax(0, 1fr) minmax(85px, .8fr);
+    }
+
+    .valor-total-litros {
+        font-size: 18px;
+    }
+
+        #listaClientesProduccion .fila-cliente-produccion {
+        grid-template-columns: minmax(0, 1fr) minmax(95px, 115px);
+        gap: 6px;
+        padding: 9px;
+    }
+
+    #listaClientesProduccion .boton-nombre-produccion {
+        font-size: 12px;
+    }
+
+    #listaClientesProduccion .etiqueta-litros-cliente-produccion {
+        font-size: 8px;
+    }
+
+    #listaClientesProduccion .valor-litros-cliente-produccion {
+        font-size: 16px;
+    }
+}
+#seccionProduccion,
+#seccionProduccion * {
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-weight: 500;
+}
+
+#seccionProduccion h1,
+#seccionProduccion h2,
+#seccionProduccion h3,
+#seccionProduccion h4,
+#seccionProduccion strong,
+#seccionProduccion b {
+    font-weight: 600;
+}
+
+#listaClientesProduccion .etiqueta-litros-cliente-produccion,
+#listaClientesProduccion .valor-litros-cliente-produccion,
+#listaClientesProduccion .cantidad-registros-cliente-produccion {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--verde-oscuro);
+}
+
+.boton-volver-clientes .icono-volver-doble {
+    display: block;
+    width: 22px;
+    height: 22px;
+    fill: var(--verde-principal);
+}
+
+/* Distribución horizontal de producción: cliente, quincena y total. */
+#seccionProduccion .contenido-tablas-produccion {
+    grid-template-columns: minmax(110px, .2fr) minmax(0, 1fr) minmax(125px, .24fr);
+    align-items: start;
+    gap: 12px;
+}
+
+#seccionProduccion .identificacion-cliente-produccion {
+    display: flex !important;
+    grid-column: 1;
+    grid-row: 1;
+    min-width: 0;
+    min-height: 110px;
+    flex-direction: column;
+    justify-content: center;
+    padding: 12px 8px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    background: #fff;
+}
+
+#seccionProduccion .identificacion-cliente-produccion .etiqueta-cliente-produccion {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--verde-principal);
+    font-size: 10px;
+    font-weight: 500;
+}
+
+#seccionProduccion #nombreClienteTablasProduccion {
+    margin: 0;
+    color: var(--verde-oscuro);
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+}
+
+#seccionProduccion .zona-tablas-quincenas {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+#seccionProduccion .encabezado-quincenas {
+    display: none;
+}
+
+#seccionProduccion .resumen-total-produccion {
+    position: static;
+    grid-column: 3;
+    grid-row: 1;
+}
+
+#seccionProduccion .tarjeta-total-produccion {
+    min-height: 110px;
+    justify-content: center;
+}
+
+#seccionProduccion .periodo-total-produccion {
+    display: none;
+}
+
+#seccionProduccion .encabezado-tabla-quincena {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    width: 100%;
+    margin-bottom: 9px;
+    text-align: center;
+}
+
+#seccionProduccion .mes-encabezado-quincena {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.35;
+}
+
+#seccionProduccion .nombre-encabezado-quincena {
+    color: #f0f6ec;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.35;
+}
+
+#seccionProduccion .tabla-dias-scroll {
+    width: 100%;
+    overflow: visible;
+}
+
+#seccionProduccion .rejilla-dias-produccion {
+    width: 100%;
+    gap: 4px;
+}
+
+#seccionProduccion .casilla-dia-produccion {
+    gap: 3px;
+    padding: 5px 2px;
+}
+
+#seccionProduccion .nombre-dia-produccion,
+#seccionProduccion .etiqueta-litros-dia {
+    font-size: 8px;
+}
+
+#seccionProduccion .entrada-litros-produccion {
+    height: 28px;
+    padding: 3px 1px;
+    font-size: 10px;
+}
+
+#seccionProduccion .tarjeta-quincena-produccion {
+    cursor: default;
+}
+
+#seccionProduccion .historial-produccion {
+    margin-top: 15px;
+}
+
+#seccionProduccion .encabezado-historial-produccion {
+    margin-bottom: 10px;
+}
+
+#seccionProduccion #contenedorHistorialProduccion {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+@media (max-width: 900px) {
+    #seccionProduccion .contenido-tablas-produccion {
+        grid-template-columns: minmax(100px, .2fr) minmax(0, 1fr);
+    }
+
+    #seccionProduccion .zona-tablas-quincenas {
+        grid-column: 2;
+        grid-row: 1 / span 2;
+    }
+
+    #seccionProduccion .resumen-total-produccion {
+        grid-column: 1;
+        grid-row: 2;
+    }
+}
+
+@media (max-width: 600px) {
+    #seccionProduccion .contenido-tablas-produccion {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 10px;
+    }
+
+    #seccionProduccion .identificacion-cliente-produccion,
+    #seccionProduccion .zona-tablas-quincenas,
+    #seccionProduccion .resumen-total-produccion {
+        grid-column: 1;
+        grid-row: auto;
+    }
+
+    #seccionProduccion .identificacion-cliente-produccion {
+        padding: 9px 11px;
+    }
+
+    #seccionProduccion .identificacion-cliente-produccion .etiqueta-cliente-produccion {
+        margin-bottom: 3px;
+    }
+
+    #seccionProduccion .tarjeta-total-produccion {
+        min-height: 85px;
+    }
+}
+
+
+#panelTablasProduccion .datos-cabecera-clientes{flex:1;text-align:center}
+#datosCabeceraTablasProduccion{white-space:pre-line;text-align:center;line-height:1.6;font-size:12px;color:var(--verde-principal)}
+#datosClientesProduccion{white-space:pre-line;text-align:center;line-height:1.6}
+
+/* Total del camión junto al buscador de Producción */
+#panelClientesProduccion .zona-busqueda-produccion{width:min(100%,470px)}
+#panelClientesProduccion .busqueda-clientes{grid-template-columns:78px minmax(0,1fr) 36px}
+.total-general-produccion{height:34px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;padding:0 4px;border-right:1px solid var(--borde);color:var(--verde-principal);white-space:nowrap}
+.total-general-produccion span{font-size:8px;font-weight:600;letter-spacing:.2px}
+.total-general-produccion strong{font-size:12px;font-weight:600;color:var(--verde-oscuro)}
+
+/* Mantener el buscador y la lupa originales; el total va sobre el contador de clientes */
+#panelClientesProduccion .zona-busqueda-produccion{width:min(100%,350px)}
+#panelClientesProduccion .busqueda-clientes{grid-template-columns:minmax(0,1fr) 36px}
+#panelClientesProduccion .total-general-produccion{width:100%;height:auto;flex-direction:row;gap:8px;margin:8px 0 0;padding:5px 8px;border:0;background:transparent}
+#panelClientesProduccion .total-general-produccion span{font-size:11px;letter-spacing:.3px}
+#panelClientesProduccion .total-general-produccion strong{font-size:14px}
+#panelClientesProduccion .zona-busqueda-produccion{width:100%;max-width:none;grid-template-columns:38px minmax(0,350px) 72px;justify-content:space-between}
+#panelClientesProduccion .zona-busqueda-produccion .busqueda-clientes{grid-column:2;grid-row:1;grid-template-columns:minmax(0,1fr) 36px}
+#panelClientesProduccion .zona-busqueda-produccion .total-general-produccion{grid-column:3;grid-row:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;height:36px;margin:0;padding:0;border:0;background:transparent;white-space:nowrap}
+#panelClientesProduccion .total-general-produccion span{font-size:11px;font-weight:600;line-height:1;color:var(--verde-principal)}
+#panelClientesProduccion .total-general-produccion strong{font-size:13px;font-weight:600;line-height:1.2;color:var(--verde-oscuro)}
+#panelClientesProduccion .estado-voz-clientes{grid-column:2;grid-row:2}
+#panelClientesProduccion .zona-busqueda-produccion{grid-template-columns:38px minmax(0,350px) minmax(0,1fr) 72px;column-gap:7px;justify-content:stretch}
+#panelClientesProduccion .zona-busqueda-produccion .boton-microfono-clientes{grid-column:1;grid-row:1}
+#panelClientesProduccion .zona-busqueda-produccion .busqueda-clientes{grid-column:2;grid-row:1}
+#panelClientesProduccion .zona-busqueda-produccion .total-general-produccion{grid-column:4;grid-row:1}
+#panelClientesProduccion .zona-busqueda-produccion{position:relative;grid-template-columns:minmax(0,1fr) 38px minmax(0,350px) minmax(0,1fr);column-gap:7px}
+#panelClientesProduccion .zona-busqueda-produccion .boton-microfono-clientes{grid-column:2;grid-row:1}
+#panelClientesProduccion .zona-busqueda-produccion .busqueda-clientes{grid-column:3;grid-row:1}
+#panelClientesProduccion .zona-busqueda-produccion .total-general-produccion{position:absolute;top:0;right:0;width:72px;grid-column:auto;grid-row:auto}
+#panelClientesProduccion .zona-busqueda-produccion .estado-voz-clientes{grid-column:3;grid-row:2}
+@media(max-width:520px){#panelClientesProduccion .zona-busqueda-produccion{grid-template-columns:38px minmax(0,1fr) 60px;column-gap:6px}#panelClientesProduccion .zona-busqueda-produccion .boton-microfono-clientes{grid-column:1}#panelClientesProduccion .zona-busqueda-produccion .busqueda-clientes{grid-column:2}#panelClientesProduccion .zona-busqueda-produccion .total-general-produccion{width:60px}#panelClientesProduccion .zona-busqueda-produccion .estado-voz-clientes{grid-column:2}}
+/* Controles compactos de búsqueda en Producción */
+#panelClientesProduccion .zona-busqueda-produccion{grid-template-columns:minmax(0,1fr) 32px minmax(0,300px) minmax(0,1fr);column-gap:6px;grid-template-rows:32px auto}
+#panelClientesProduccion .zona-busqueda-produccion .boton-microfono-clientes{width:30px;height:30px;font-size:18px}
+#panelClientesProduccion .zona-busqueda-produccion .busqueda-clientes{min-height:30px;grid-template-columns:minmax(0,1fr) 30px}
+#panelClientesProduccion .zona-busqueda-produccion .busqueda-clientes input{height:28px;padding:5px 8px;font-size:11px}
+#panelClientesProduccion .zona-busqueda-produccion .boton-lupa-clientes{width:29px;height:28px}
+#panelClientesProduccion .zona-busqueda-produccion .boton-lupa-clientes svg{width:17px;height:17px}
+#panelClientesProduccion .zona-busqueda-produccion .total-general-produccion{width:64px;height:32px}
+#panelClientesProduccion .zona-busqueda-produccion .total-general-produccion span{font-size:9px}
+#panelClientesProduccion .zona-busqueda-produccion .total-general-produccion strong{font-size:11px}
+
+/* Menú principal compacto */
+.boton-menu{min-height:40px;padding:8px 10px;border-radius:8px;box-shadow:0 2px 5px rgba(30,65,30,.12)}
+.botones-centro{gap:6px;margin-bottom:14px}
+.botones-centro button,.boton-dashboard{min-height:52px;padding:5px 4px;gap:2px;border-radius:8px;box-shadow:0 2px 5px rgba(30,65,30,.12)}
+.botones-centro .icono-navegacion,.boton-dashboard .icono-navegacion{font-size:18px;line-height:1}
+.botones-centro .texto-navegacion,.boton-dashboard .texto-navegacion{font-size:8px;line-height:1.1}
+@media(max-width:700px){.botones-centro{gap:4px}.botones-centro button,.boton-dashboard{min-height:48px;padding:4px 3px}.botones-centro .icono-navegacion,.boton-dashboard .icono-navegacion{font-size:17px}.botones-centro .texto-navegacion,.boton-dashboard .texto-navegacion{font-size:7px}}
+
+#panelClientesFinanzas .datos-cabecera-clientes p{white-space:pre-line}
+#panelClientesFinanzas .zona-busqueda-clientes{margin-right:auto;margin-left:auto}
+#panelClientesFinanzas .barra-clientes-camion{position:relative;justify-content:center}
+#panelClientesFinanzas .datos-cabecera-clientes{width:100%;text-align:center}
+#panelClientesFinanzas .barra-clientes-camion>.boton-volver-clientes{position:absolute;left:0}
+#panelDetalleFinanzas .datos-cabecera-clientes{text-align:center}
+#panelDetalleFinanzas .formulario-adelanto-finanzas{display:grid;grid-template-columns:minmax(150px,1.35fr) minmax(130px,1fr) minmax(130px,1fr) auto;align-items:end;gap:9px;margin:0 0 16px;padding:12px;border:1px solid #e1e8dd;border-radius:10px;background:#fff}
+#panelDetalleFinanzas .campo-adelanto-finanzas{display:flex;min-width:0;min-height:62px;flex-direction:column;justify-content:space-between;gap:6px;padding:8px;border:1px solid #dce6d7;border-radius:7px;background:#fbfdf9;color:#637060;font-size:9px;font-weight:700;letter-spacing:.45px}
+#panelDetalleFinanzas .campo-adelanto-finanzas input,#panelDetalleFinanzas .campo-adelanto-finanzas select{height:32px;min-width:0;padding:5px 7px;border:0;border-top:1px solid #e4ebe0;border-radius:0;background:transparent;color:var(--verde-oscuro);font-size:12px;font-weight:500;letter-spacing:0}
+#panelDetalleFinanzas .acciones-adelanto-finanzas{display:flex;align-items:center;gap:6px}
+#panelDetalleFinanzas .boton-guardar-adelanto-finanzas{min-height:40px;padding:0 12px;border:0;border-radius:6px;background:var(--verde-principal);color:#fff;font-size:10px;font-weight:700;white-space:nowrap}
+#panelDetalleFinanzas #mensajeAdelantoFinanzas{grid-column:1/-1;min-height:14px;margin:0;color:var(--verde-principal);font-size:11px}
+#tablasAdelantosFinanzas{display:grid;gap:12px}
+#panelDetalleFinanzas .tarjeta-quincena-finanzas{cursor:default}
+#panelDetalleFinanzas .encabezado-tabla-quincena{margin-bottom:9px;text-align:center}
+#panelDetalleFinanzas .encabezado-saldos-finanzas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;min-height:61px;padding:8px;background:transparent}
+#panelDetalleFinanzas .division-saldo-finanzas{display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0;padding:10px 12px;border:1px solid var(--borde);border-radius:6px;background:#fff;color:var(--verde-principal);font-size:12px;font-weight:700;text-align:left}
+#panelDetalleFinanzas .division-saldo-finanzas strong{white-space:nowrap;color:var(--verde-principal);font-size:13px;font-weight:800}
+#panelDetalleFinanzas .rejilla-dias-finanzas{width:100%;gap:4px}
+#panelDetalleFinanzas .rejilla-dias-finanzas .casilla-dia-produccion{gap:3px;padding:5px 2px}
+#panelDetalleFinanzas .rejilla-dias-finanzas .casilla-quincena-finanzas{min-height:82px}
+#panelDetalleFinanzas .rejilla-dias-finanzas .numero-dia-produccion{font-size:11px;line-height:1.2}
+#panelDetalleFinanzas .rejilla-dias-finanzas .nombre-dia-produccion,
+#panelDetalleFinanzas .rejilla-dias-finanzas .etiqueta-litros-dia{font-size:8px}
+#panelDetalleFinanzas .rejilla-dias-finanzas .entrada-litros-produccion{height:28px;padding:3px 1px;font-size:10px}
+@media(max-width:600px){#panelDetalleFinanzas .encabezado-saldos-finanzas{grid-template-columns:1fr;gap:5px}#panelDetalleFinanzas .division-saldo-finanzas{padding:8px 10px}}
+#listaClientesFinanzas .datos-fila-cliente{min-width:0;margin:0;padding:0;border:0;background:transparent}
+#listaClientesFinanzas .boton-nombre-produccion{display:block;width:100%;min-width:0;margin:0;padding:5px 0;border:0;border-radius:0;background:transparent;color:var(--verde-oscuro);font-size:13px;font-weight:700;line-height:1.4;text-align:left;overflow-wrap:anywhere}
+#listaClientesFinanzas .boton-nombre-produccion:hover{background:transparent;color:var(--verde-principal);text-decoration:underline}
+#listaClientesFinanzas .saldo-cliente-finanzas{display:inline-flex;min-width:124px;min-height:34px;align-items:center;justify-content:center;padding:6px 10px;border:0;border-radius:7px;font-size:11px;font-weight:800;text-align:center;white-space:nowrap}
+#listaClientesFinanzas .saldo-finanzas-rojo{background:#fee2e2;color:#991b1b}
+#listaClientesFinanzas .saldo-finanzas-naranja{background:#ffedd5;color:#9a3412}
+#listaClientesFinanzas .saldo-finanzas-verde,#listaClientesFinanzas .saldo-finanzas-pagado{background:#dcfce7;color:#166534}
+@media(max-width:480px){#listaClientesFinanzas .fila-cliente-admin{grid-template-columns:minmax(0,1fr) auto;gap:8px;padding:10px}#listaClientesFinanzas .saldo-cliente-finanzas{min-width:98px;padding:6px;font-size:10px}}
+@media(max-width:760px){#panelDetalleFinanzas .formulario-adelanto-finanzas{grid-template-columns:repeat(2,minmax(0,1fr))}#panelDetalleFinanzas .acciones-adelanto-finanzas{grid-column:1/-1;justify-content:flex-end}}
+@media(max-width:440px){#panelDetalleFinanzas .formulario-adelanto-finanzas{grid-template-columns:minmax(0,1fr)}#panelDetalleFinanzas .acciones-adelanto-finanzas,#panelDetalleFinanzas #mensajeAdelantoFinanzas{grid-column:1}}
+
+#panelDetalleFinanzas .tablas-adelantos-finanzas{overflow-x:auto;border:1px solid #e1e8dd;border-radius:10px;background:#fff}
+#panelDetalleFinanzas .tabla-resumen-adelantos-finanzas{width:100%;border-collapse:collapse;text-align:left;font-size:12px}
+#panelDetalleFinanzas .tabla-resumen-adelantos-finanzas th{padding:12px 14px;background:#f2f6ef;color:var(--verde-oscuro);font-size:10px;letter-spacing:.35px;text-transform:uppercase;white-space:nowrap}
+#panelDetalleFinanzas .tabla-resumen-adelantos-finanzas td{padding:13px 14px;border-top:1px solid #e8ede5;color:#344237;white-space:nowrap}
+#panelDetalleFinanzas .tabla-resumen-adelantos-finanzas tbody tr:hover{background:#fbfdf9}
+#panelDetalleFinanzas .tabla-resumen-adelantos-finanzas .pendiente-adelanto-finanzas{color:var(--verde-principal);font-weight:800}
+#panelDetalleFinanzas .tabla-resumen-adelantos-finanzas .sin-adelantos-finanzas{padding:22px;text-align:center;color:#788174}
+@media(max-width:600px){#panelDetalleFinanzas .tabla-resumen-adelantos-finanzas{min-width:620px}}
+#panelDetalleFinanzas .tabla-resumen-adelantos-finanzas{min-width:900px}
+#panelDetalleFinanzas .control-descuento-finanzas{display:flex;align-items:center;gap:6px;min-width:220px}
+#panelDetalleFinanzas .control-descuento-finanzas input{width:105px;height:34px;padding:6px 8px;border:1px solid #dce6d7;border-radius:6px;color:var(--verde-oscuro)}
+#panelDetalleFinanzas .boton-guardar-descuento-finanzas{height:34px;padding:0 9px;border:0;border-radius:6px;background:var(--verde-principal);color:#fff;font-size:9px;font-weight:700;white-space:nowrap}
+#panelDetalleFinanzas .acciones-fila-finanzas{display:flex;align-items:center;gap:7px}
+#panelDetalleFinanzas .boton-icono-finanzas{width:32px;height:32px;border:1px solid #dce6d7;border-radius:6px;background:#fff;color:var(--verde-oscuro);font-size:18px;cursor:pointer}
+#panelDetalleFinanzas .boton-icono-finanzas:hover{background:#f2f6ef}
+#panelDetalleFinanzas .boton-eliminar-finanzas{color:#a83d37}
+#panelDetalleFinanzas .panel-registro-descuento-finanzas{display:flex;align-items:flex-end;justify-content:flex-end;gap:8px;margin:-7px 0 14px;padding:0 12px}
+#panelDetalleFinanzas .campo-descuento-finanzas{display:flex;width:150px;flex-direction:column;gap:5px}
+#panelDetalleFinanzas .campo-descuento-finanzas label{color:#637060;font-size:10px;font-weight:700;letter-spacing:.4px}
+#panelDetalleFinanzas .campo-descuento-finanzas input{width:100%;height:36px;padding:7px 9px;border:1px solid #dce6d7;border-radius:6px;background:#fff;color:var(--verde-oscuro)}
+#panelDetalleFinanzas .acciones-descuento-finanzas{display:flex;align-items:center;gap:7px}
+#panelDetalleFinanzas .boton-icono-finanzas:disabled,#panelDetalleFinanzas .boton-guardar-descuento-finanzas:disabled,#panelDetalleFinanzas .acciones-descuento-finanzas input:disabled{opacity:.45;cursor:not-allowed}
+#panelDetalleFinanzas .tabla-resumen-adelantos-finanzas tbody tr{cursor:pointer}
+#panelDetalleFinanzas .tabla-resumen-adelantos-finanzas tbody tr.adelanto-seleccionado-finanzas{background:#f2f7ef}
+#panelDetalleFinanzas .espacio-celda-finanzas{display:flex;min-height:34px;align-items:center;padding:6px 9px;border:1px solid #e1e8dd;border-radius:6px;background:#fff;color:#344237}
+#panelDetalleFinanzas .espacio-vacio-finanzas{min-height:34px;background:#fff}
+#panelDetalleFinanzas .tabla-resumen-adelantos-finanzas th{text-align:center}
+#panelDetalleFinanzas .tabla-resumen-adelantos-finanzas td{text-align:center}
+#panelDetalleFinanzas .tabla-resumen-adelantos-finanzas .espacio-celda-finanzas{justify-content:center;text-align:center}
+#panelDetalleFinanzas .campo-edicion-adelanto-finanzas{box-sizing:border-box;width:100%;min-width:80px;min-height:34px;padding:6px 8px;border:1px solid #cdddc7;border-radius:6px;background:#fff;color:#344237;font:inherit;text-align:center}
+#panelDetalleFinanzas select.campo-edicion-adelanto-finanzas{cursor:pointer}
+#panelDetalleFinanzas input[type="number"]{-moz-appearance:textfield;appearance:textfield}
+#panelDetalleFinanzas input[type="number"]::-webkit-inner-spin-button,#panelDetalleFinanzas input[type="number"]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+#panelDetalleFinanzas .titulo-tabla-descuentos-finanzas{margin:20px 0 10px;color:var(--verde-oscuro);font-size:13px;text-align:center}
+#panelDetalleFinanzas .rejilla-descuentos-finanzas{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:9px}
+#panelDetalleFinanzas .cuadro-descuento-finanzas{display:flex;min-width:0;min-height:130px;flex-direction:column;align-items:center;justify-content:flex-start;gap:7px;padding:12px 8px;border:1px solid #dce6d7;border-radius:9px;background:#fff;text-align:center}
+#panelDetalleFinanzas .cuadro-descuento-finanzas.descuento-completado-finanzas{background:#fbfdf9}
+#panelDetalleFinanzas .mes-descuento-finanzas{min-height:16px;color:var(--verde-oscuro);font-size:12px;font-weight:800}
+#panelDetalleFinanzas .fecha-descuento-finanzas{min-height:16px;color:#637060;font-size:11px}
+#panelDetalleFinanzas .etiqueta-descuento-finanzas{margin-top:3px;color:#637060;font-size:10px;font-weight:700}
+#panelDetalleFinanzas .monto-descuento-finanzas,#panelDetalleFinanzas .entrada-edicion-descuento-finanzas{display:flex;width:100%;min-height:34px;align-items:center;justify-content:center;padding:6px;border:1px solid #e1e8dd;border-radius:6px;background:#fff;color:var(--verde-oscuro);font-size:12px;text-align:center}
+@media(max-width:900px){#panelDetalleFinanzas .rejilla-descuentos-finanzas{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:480px){#panelDetalleFinanzas .rejilla-descuentos-finanzas{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){#panelDetalleFinanzas .panel-registro-descuento-finanzas{align-items:flex-end;gap:5px;padding:0 5px}#panelDetalleFinanzas .campo-descuento-finanzas{width:min(38vw,150px)}#panelDetalleFinanzas .acciones-descuento-finanzas{flex-wrap:wrap}}
+#panelDetalleFinanzas .boton-icono-finanzas:disabled,#panelDetalleFinanzas .boton-guardar-descuento-finanzas:disabled,#panelDetalleFinanzas .acciones-descuento-finanzas input:disabled{opacity:1}
+
+/* Navegación dentro del menú, adaptable a escritorio y celular */
+.paneles-principales{grid-template-columns:230px minmax(0,1fr)}
+.panel-izquierdo{padding:14px;background:var(--verde-lateral)}
+.panel-central{border-left:0}
+.boton-menu{min-height:46px;text-align:left;font-size:14px}
+.submenu{display:flex;flex-direction:column;width:100%;gap:0;margin-top:8px;padding:0;border:0;border-radius:8px;background:transparent}
+.submenu[hidden]{display:none}
+.submenu .botones-centro{display:flex;flex-direction:column;gap:5px;margin:0}
+.submenu .botones-centro button{display:flex;min-height:42px;flex-direction:row;justify-content:flex-start;gap:10px;padding:8px 10px;border:0;border-radius:7px;background:transparent;color:#fff;text-align:left}
+.submenu .botones-centro button:hover,.submenu .botones-centro button:focus-visible{background:rgba(255,255,255,.15);box-shadow:none}
+.submenu .icono-navegacion{width:22px;flex:0 0 22px;font-size:18px;text-align:center}
+.submenu .icono-poronguito{width:26px;flex-basis:26px;height:26px;object-fit:contain}
+.barra-vehiculos h2 .icono-poronguito-produccion{width:32px;height:32px;margin-right:5px;object-fit:contain;vertical-align:middle}
+.submenu .texto-navegacion{font-size:12px;text-align:left;overflow-wrap:normal}
+.acciones-menu{display:flex;flex-direction:column;gap:5px;margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,.25)}
+.acciones-menu button{display:flex;align-items:center;gap:10px;width:100%;min-height:40px;padding:8px 10px;border:0;border-radius:7px;background:transparent;color:#fff;font-family:inherit;font-size:12px;font-weight:700;text-align:left;cursor:pointer}
+.acciones-menu button:hover,.acciones-menu button:focus-visible{background:rgba(255,255,255,.15)}
+.acciones-menu>button:last-child{color:#fff}
+.submenu-ajustes{display:flex;flex-direction:column;gap:3px;margin:2px 0 4px 13px;padding-left:8px;border-left:1px solid rgba(255,255,255,.3)}
+.submenu-ajustes[hidden]{display:none!important}
+.acciones-menu .submenu-ajustes button{min-height:34px;padding:6px 7px;gap:10px;color:#fff;font-size:12px;line-height:1.2}
+.icono-ajustes{display:inline-flex;width:22px;height:22px;flex:0 0 22px;align-items:center;justify-content:center;font-size:18px;line-height:1;text-align:center}
+.boton-menu{width:100%;min-height:40px;padding:8px 10px;border:0;border-radius:7px;background:transparent;color:#fff;box-shadow:none;font-size:12px;text-align:left}
+.boton-menu:hover,.boton-menu:focus-visible{background:rgba(255,255,255,.15);box-shadow:none}
+.encabezado{background:var(--verde-encabezado);border-bottom:4px solid var(--verde-lateral)}
+.titulo-empresa h1,.titulo-empresa p,.marca-camweb{color:var(--verde-oscuro)}
+.zona-logo{border-color:var(--verde-principal);color:var(--verde-oscuro)}
+.panel-central{position:relative;padding-right:84px;background:var(--verde-fondo)}
+.panel-central::after{position:absolute;top:0;right:0;bottom:0;width:68px;background:var(--verde-lateral);content:"";pointer-events:none}
+@media(max-width:850px){
+    .paneles-principales{grid-template-columns:minmax(0,1fr)}
+    .panel-izquierdo{display:block;padding:10px;border:0;border-bottom:1px solid var(--borde)}
+    .panel-izquierdo>.boton-menu{width:100%}
+    .submenu{width:100%;margin-top:8px}
+    .submenu .botones-centro{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px}
+    .submenu .botones-centro button{min-width:0}
+    .submenu .texto-navegacion{font-size:11px}
+    .panel-central{padding-right:10px;border:0}
+    .panel-central::after{display:none}
+}
+@media(max-width:560px){
+    .paneles-principales{position:relative;display:block;min-height:calc(100vh - 92px)}
+    .panel-izquierdo{position:absolute;top:10px;left:10px;z-index:1002;display:block;width:min(220px,calc(100vw - 36px));max-height:calc(100vh - 112px);overflow-y:auto;padding:10px;border:1px solid rgba(255,255,255,.16);border-radius:9px;background:var(--verde-lateral);box-shadow:0 8px 24px rgba(0,0,0,.24)}
+    .panel-izquierdo>.boton-menu{width:100%}
+    .submenu .botones-centro{grid-template-columns:1fr}
+    .submenu .botones-centro button{min-height:44px;padding:8px 12px}
+    .submenu .texto-navegacion{font-size:12px}
+    .acciones-menu{margin-top:8px}
+    .panel-central{position:relative;min-height:calc(100vh - 92px);padding:14px 10px 20px}
+    .panel-central::after{display:none}
+    .fondo-ventana{position:fixed;inset:110px 0 0;z-index:1100;background:rgba(18,42,24,.24);pointer-events:auto}
+    .ventana-lateral{position:absolute;top:12px;left:50%;width:calc(100vw - 24px);max-width:360px;max-height:calc(100dvh - 140px);transform:translateX(-50%)}
+}
+
+/* Centrar los títulos de las secciones principales */
+.seccion h2{ text-align:center }
+.seccion-vehiculos>.barra-vehiculos{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center}
+.seccion-vehiculos>.barra-vehiculos h2{grid-column:2;grid-row:1;text-align:center;white-space:nowrap}
+.seccion-vehiculos>.barra-vehiculos .boton-registrar-camion{grid-column:3;grid-row:1;justify-self:end}
+.seccion-clientes #panelListaCamionesClientes>.barra-vehiculos,
+.seccion-produccion>#panelListaCamionesProduccion>.barra-vehiculos,
+.seccion-produccion>#panelListaCamionesFinanzas>.barra-vehiculos{justify-content:center;text-align:center}
+.barra-clientes-camion{position:relative;justify-content:center}
+.barra-clientes-camion>.boton-volver-clientes{position:absolute;left:0}
+.barra-clientes-camion>.datos-cabecera-clientes{width:100%;text-align:center}
+@media(max-width:560px){
+    .seccion-vehiculos>.barra-vehiculos{grid-template-columns:minmax(0,1fr)}
+    .seccion-vehiculos>.barra-vehiculos h2{grid-column:1;grid-row:1}
+    .seccion-vehiculos>.barra-vehiculos .boton-registrar-camion{grid-column:1;grid-row:2;justify-self:center}
+}
+
+/* Acceso inicial a Proveedores dentro de Puntos de descarga */
+.seccion-puntos-descarga .titulo-puntos-descarga {
+    text-align: center;
+}
+
+.boton-proveedor-descarga {
+    display: inline-flex;
+    min-height: 38px;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 14px;
+    border: 0;
+    border-radius: 7px;
+    background: var(--verde-principal);
+    color: #fff;
+    font: 700 12px Arial, sans-serif;
+    cursor: pointer;
+    transition: background-color .18s ease, transform .18s ease;
+}
+
+.boton-proveedor-descarga:hover,
+.boton-proveedor-descarga:focus-visible {
+    background: var(--verde-oscuro);
+}
+
+.boton-proveedor-descarga:active {
+    transform: scale(.98);
+}
+
+.icono-proveedor-descarga {
+    font-size: 17px;
+    line-height: 1;
+}
+
+.boton-proveedor-descarga {
+    width: 82px;
+    min-height: 58px;
+    flex-direction: column;
+    gap: 4px;
+    margin: 6px auto 10px;
+    padding: 7px 9px;
+    border-radius: 9px;
+    font-size: 9px;
+    box-shadow: 0 2px 6px rgba(35, 83, 39, .18);
+}
+
+.icono-proveedor-descarga {
+    font-size: 20px;
+}
+
+.formulario-proveedor-descarga {
+    max-width: 680px;
+    margin-top: 14px;
+    padding: 10px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    background: #f8fbf6;
+}
+
+.panel-proveedores-descarga {
+    position: relative;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 12px 0 0;
+}
+
+.subtitulo-proveedores-descarga {
+    margin: 0 0 16px;
+    color: var(--verde-oscuro);
+    font-size: 18px;
+    text-align: center;
+}
+
+.panel-proveedores-descarga > .boton-volver-clientes {
+    position: absolute;
+    top: 8px;
+    left: 0;
+}
+
+.campos-proveedor-descarga {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(130px, .8fr);
+    gap: 9px;
+}
+
+.campos-proveedor-descarga label {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    color: var(--verde-oscuro);
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.campos-proveedor-descarga input {
+    width: 100%;
+    min-width: 0;
+    min-height: 34px;
+    padding: 7px 9px;
+    border: 1px solid var(--borde);
+    border-radius: 5px;
+    background: white;
+    color: var(--texto);
+    font-size: 12px;
+}
+
+.acciones-formulario-proveedor,
+.acciones-proveedor-descarga {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 9px;
+}
+
+.boton-guardar-proveedor,
+.boton-cancelar-proveedor {
+    min-height: 32px;
+    padding: 7px 14px;
+    border: 0;
+    border-radius: 5px;
+    font-size: 11px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.boton-guardar-proveedor {
+    background: var(--verde-principal);
+    color: #fff;
+}
+
+.boton-cancelar-proveedor {
+    background: #e3eae0;
+    color: var(--verde-oscuro);
+}
+
+.mensaje-proveedor-descarga {
+    min-height: 14px;
+    margin: 5px 0 0;
+    color: var(--verde-principal);
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.lista-proveedores-descarga {
+    display: flex;
+    max-width: 680px;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 14px;
+}
+
+.titulo-lista-proveedores-descarga {
+    display: none;
+}
+
+.lista-proveedores-resumen-descarga {
+    display: flex;
+    width: calc(100% + 4px);
+    max-width: none;
+    flex-direction: column;
+    gap: 8px;
+    margin: 10px 0 0;
+}
+
+.encabezado-lista-proveedores-descarga {
+    width: calc(100% + 4px);
+    max-width: none;
+    margin: 12px 0 9px;
+}
+
+.encabezado-lista-proveedores-descarga span {
+    margin-right: 12px;
+}
+
+.fila-proveedor-resumen-descarga {
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 12px;
+}
+
+.total-litros-proveedor-resumen {
+    justify-self: end;
+    color: var(--verde-oscuro);
+    font-size: 15px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.boton-nombre-proveedor-descarga {
+    display: block;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--verde-oscuro);
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+.boton-nombre-proveedor-descarga:hover {
+    text-decoration: underline;
+}
+
+.panel-registro-descarga {
+    width: 100%;
+}
+
+.panel-registro-descarga .contenido-tablas-produccion {
+    grid-template-columns: minmax(110px, .2fr) minmax(0, 1fr) minmax(125px, .24fr);
+    align-items: start;
+    gap: 12px;
+}
+
+.panel-registro-descarga .identificacion-cliente-produccion {
+    display: flex !important;
+    grid-column: 1;
+    grid-row: 1;
+    min-width: 0;
+    min-height: 110px;
+    flex-direction: column;
+    justify-content: center;
+    padding: 12px 8px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    background: #fff;
+}
+
+.panel-registro-descarga .lista-camiones-resumen-descarga {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.panel-registro-descarga .camion-resumen-descarga {
+    padding: 7px 8px;
+    border: 1px solid var(--borde);
+    border-radius: 7px;
+    background: #fff;
+    color: var(--texto, #333);
+    overflow-wrap: anywhere;
+}
+
+.panel-registro-descarga .camion-resumen-descarga h3 {
+    margin: 0 0 2px;
+    color: var(--verde-oscuro);
+    font-size: 13px;
+}
+
+.panel-registro-descarga .camion-resumen-descarga p {
+    margin: 0;
+    font-size: 11px;
+    line-height: 1.2;
+}
+
+.panel-registro-descarga .total-camion-resumen-descarga {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 4px;
+    color: var(--verde-oscuro);
+    line-height: 1.25;
+}
+
+.panel-registro-descarga .total-camion-resumen-descarga span {
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.panel-registro-descarga .total-camion-resumen-descarga strong {
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.panel-registro-descarga .identificacion-cliente-produccion h3 {
+    margin: 0;
+    color: var(--verde-oscuro);
+    font-size: 15px;
+    overflow-wrap: anywhere;
+}
+
+.panel-registro-descarga .zona-tablas-quincenas { grid-column: 2; grid-row: 1; }
+.panel-registro-descarga .encabezado-quincenas { display: none; }
+.panel-registro-descarga .resumen-total-produccion { position: static; grid-column: 3; grid-row: 1; }
+.panel-registro-descarga .datos-proveedor-resumen-descarga {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 2px 1px;
+    color: var(--verde-oscuro);
+    overflow-wrap: anywhere;
+}
+.panel-registro-descarga .datos-proveedor-resumen-descarga strong { font-size: 14px; }
+.panel-registro-descarga .datos-proveedor-resumen-descarga span { color: #596456; font-size: 11px; line-height: 1.3; }
+.panel-registro-descarga .tarjeta-total-produccion { min-height: 110px; margin-top: 7px; justify-content: center; }
+.panel-registro-descarga .periodo-total-produccion { display: none; }
+.panel-registro-descarga .encabezado-tabla-quincena { flex-direction: column; align-items: center; text-align: center; }
+.panel-registro-descarga .tabla-dias-scroll { width: 100%; overflow: visible; }
+.panel-registro-descarga .rejilla-dias-produccion { width: 100%; gap: 4px; }
+.panel-registro-descarga .casilla-dia-produccion { gap: 3px; padding: 5px 2px; }
+.panel-registro-descarga .nombre-dia-produccion,
+.panel-registro-descarga .etiqueta-litros-dia { font-size: 8px; }
+.panel-registro-descarga .entrada-litros-produccion { height: 28px; padding: 3px 1px; font-size: 10px; }
+.panel-registro-descarga .tarjeta-quincena-produccion { cursor: default; }
+.panel-registro-descarga .historial-produccion { margin-top: 15px; }
+#contenedorHistorialDescarga { display: flex; flex-direction: column; gap: 12px; }
+
+@media(max-width:900px) {
+    .panel-registro-descarga .contenido-tablas-produccion {
+        grid-template-columns: minmax(100px, .2fr) minmax(0, 1fr);
+    }
+    .panel-registro-descarga .identificacion-cliente-produccion { grid-column: 1; }
+    .panel-registro-descarga .zona-tablas-quincenas { grid-column: 2; }
+    .panel-registro-descarga .resumen-total-produccion { grid-column: 1 / -1; grid-row: 2; }
+}
+
+@media(max-width:640px) {
+    .panel-registro-descarga .contenido-tablas-produccion { grid-template-columns: minmax(0, 1fr); }
+    .panel-registro-descarga .identificacion-cliente-produccion,
+    .panel-registro-descarga .zona-tablas-quincenas,
+    .panel-registro-descarga .resumen-total-produccion { grid-column: 1; }
+    .panel-registro-descarga .zona-tablas-quincenas { grid-row: 2; }
+    .panel-registro-descarga .resumen-total-produccion { grid-row: 3; }
+}
+
+.zona-busqueda-proveedores {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.lista-proveedores-resumen-descarga {
+    margin-right: auto;
+    margin-left: 0;
+}
+
+@media(max-width:850px) {
+    .encabezado-lista-proveedores-descarga,
+    .lista-proveedores-resumen-descarga {
+        width: calc(100% - 12px);
+    }
+}
+
+.fila-proveedor-descarga {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 12px;
+    border: 1px solid #e1e9dc;
+    border-radius: 7px;
+    background: #fff;
+}
+
+.nombre-proveedor-descarga {
+    margin: 0 0 4px;
+    color: var(--verde-oscuro);
+    font-size: 13px;
+    overflow-wrap: anywhere;
+}
+
+.precio-proveedor-descarga {
+    margin: 0;
+    color: #53644e;
+    font-size: 12px;
+}
+
+.boton-editar-proveedor,
+.boton-eliminar-proveedor {
+    width: 34px;
+    height: 34px;
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    background: #f6faf3;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.boton-eliminar-proveedor {
+    border-color: #e5c0c0;
+}
+
+.proveedores-descarga-vacio {
+    padding: 16px 12px;
+    border: 1px dashed var(--borde);
+    border-radius: 7px;
+    color: #596456;
+    font-size: 13px;
+    text-align: center;
+}
+
+@media(max-width:560px) {
+    .campos-proveedor-descarga {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+/* Controles compactos de edición y guardado en los paneles */
+.boton-editar-cliente,.boton-editar-proveedor{width:30px;height:30px;font-size:15px}
+.boton-editar-produccion,.boton-guardar-produccion{min-height:32px;padding:5px 4px;font-size:10px}
+.boton-editar-produccion{font-size:16px}
+.boton-editar-quincena,.boton-guardar-quincena{min-height:30px;padding:5px 4px;font-size:10px}
+.boton-editar-icono .icono-lapiz{font-size:19px}
+#panelDetalleFinanzas .boton-icono-finanzas{width:30px;height:30px;font-size:16px}
+
+/* Reportes por cliente */
+.seccion-reportes{padding-bottom:18px}
+.barra-reportes{display:flex;align-items:flex-end;justify-content:center;gap:16px;margin-bottom:12px}
+.titulo-reportes{width:100%;text-align:center}
+#panelListaCamionesReporte{margin-top:20px}
+.titulo-reportes h2{margin:0;color:var(--verde-oscuro);text-align:center}
+.titulo-reportes p{margin:5px 0 0;color:#647260;font-size:12px}
+.controles-reportes{position:relative;display:flex;align-items:flex-end;gap:9px;flex-wrap:wrap;margin:8px 0 12px}
+.controles-reportes label{display:flex;flex-direction:column;gap:4px;color:var(--verde-oscuro);font-size:10px;font-weight:700}
+.controles-reportes input,.controles-reportes select{height:36px;padding:0 9px;border:1px solid var(--borde);border-radius:6px;background:#fff;color:var(--texto);font:inherit;font-size:12px}
+.boton-archivo-reportes,.boton-imprimir-reportes{display:inline-flex;height:36px;align-items:center;justify-content:center;border:1px solid var(--verde-principal);border-radius:6px;background:var(--verde-principal);color:#fff;font-size:11px;font-weight:800;cursor:pointer}
+.boton-archivo-reportes{width:40px;padding:0}
+.boton-archivo-reportes svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.8}
+.boton-imprimir-reportes{width:40px;padding:0}
+.boton-archivo-reportes:hover,.boton-imprimir-reportes:hover{border-color:var(--verde-oscuro);background:var(--verde-oscuro)}
+.boton-imprimir-reportes svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:2}
+.total-produccion-reportes{display:inline-flex;min-height:36px;align-items:center;padding:0 10px;border:1px solid #b9d2b1;border-radius:6px;background:#f1f7ee;color:var(--verde-oscuro);font-size:11px;font-weight:800;white-space:nowrap}
+.panel-archivo-reportes{position:absolute;z-index:5;top:calc(100% + 6px);left:0;display:flex;width:min(280px,calc(100vw - 40px));max-height:min(65vh,460px);flex-direction:column;overflow-y:auto;padding:8px;border:1px solid var(--borde);border-radius:8px;background:#fff;box-shadow:0 4px 14px rgba(35,83,39,.16)}
+.panel-archivo-reportes[hidden]{display:none!important}
+.lista-archivo-reportes{display:flex;flex-direction:column;gap:7px}
+.grupo-mes-archivo-reportes{display:grid;grid-template-columns:1fr;gap:4px}
+.grupo-mes-archivo-reportes h3{margin:2px 3px;color:var(--verde-oscuro);font-size:11px}
+.opcion-quincena-archivo{width:100%;min-height:30px;padding:5px 8px;border:1px solid var(--borde);border-radius:5px;background:#f8fbf6;color:var(--texto);font-size:11px;text-align:left;cursor:pointer}
+.opcion-quincena-actual{font-weight:800}
+.opcion-quincena-archivo:hover,.opcion-quincena-archivo.seleccionada{border-color:var(--verde-principal);background:#eaf3e7;color:var(--verde-oscuro)}
+.estado-reportes{min-height:16px;margin:0 0 8px;color:#647260;font-size:11px}
+.pagina-reportes{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),340px));justify-content:center;align-content:start;gap:12px;margin:0 0 18px}
+.tarjeta-reporte{display:grid;min-width:0;aspect-ratio:1.7;grid-template-rows:20px 27px 20px minmax(0,1fr) 16px 23px;gap:3px;overflow:hidden;padding:7px;border:1px solid #cbdcc5;border-radius:9px;background:#fff;color:#243a27;box-shadow:0 2px 7px rgba(35,83,39,.08);font-family:Arial,Helvetica,sans-serif}
+.tarjeta-reporte.sin-adelanto{grid-template-rows:20px 27px 20px minmax(0,1fr) 16px}
+@media screen{.tarjeta-reporte.sin-adelanto{aspect-ratio:1.75}}
+.marca-tarjeta-reporte{display:flex;min-width:0;align-items:center;justify-content:center;gap:6px;overflow:hidden;color:var(--verde-oscuro);font-size:12px;font-weight:800;text-align:center}
+.marca-tarjeta-reporte img{width:18px;height:18px;flex:0 0 18px;object-fit:contain}
+.marca-tarjeta-reporte strong{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.periodo-tarjeta-reporte{display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;border-radius:6px;background:var(--color-recibo, var(--verde-principal, #246b38));color:#fff;line-height:1.15}
+.periodo-tarjeta-reporte strong{font-size:11px}
+.periodo-tarjeta-reporte span{font-size:9px;font-weight:700}
+.cliente-tarjeta-reporte{overflow:hidden;color:var(--verde-oscuro);font-size:11px;font-weight:800;text-align:center;text-overflow:ellipsis;white-space:nowrap}
+.calendario-tarjeta-reporte{display:grid;min-height:0;grid-template-columns:repeat(8,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:3px;overflow:hidden}
+.dia-tarjeta-reporte{display:flex;min-width:0;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;border:1px solid #d6e3d1;border-radius:5px;background:#fff;text-align:center;line-height:1.12}
+.dia-tarjeta-reporte strong{font-size:9px}
+.dia-tarjeta-reporte span,.dia-tarjeta-reporte small{font-size:6px}
+.dia-tarjeta-reporte b{font-size:8px;font-weight:600}
+.total-produccion-tarjeta-reporte{display:grid;min-width:0;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px}
+.total-produccion-tarjeta-reporte .celda-resumen-reporte{flex-direction:row;gap:3px;color:#273d2a;white-space:nowrap}
+.resumen-finanzas-tarjeta-reporte{display:grid;min-width:0;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px}
+.celda-resumen-reporte{display:flex;min-width:0;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;border:1px solid #d6e3d1;border-radius:5px;background:#f8fbf6;text-align:center;line-height:1.1}
+.resumen-finanzas-tarjeta-reporte .celda-resumen-reporte{flex-direction:row;gap:2px;white-space:nowrap}
+.celda-resumen-reporte span{font-size:7px;font-weight:700}
+.celda-resumen-reporte strong{font-size:9px;white-space:nowrap}
+.celda-resumen-reporte.pendiente-reporte{border-color:#9fbea0;background:#edf5e9;color:#205d31}
+
+@media(max-width:700px){
+    .barra-reportes{align-items:stretch;flex-direction:column}
+    .controles-reportes{align-items:flex-end}
+    .controles-reportes label{flex:1;min-width:120px}
+    .controles-reportes input,.controles-reportes select{width:100%}
+    .pagina-reportes{grid-template-columns:minmax(0,340px);justify-content:center}
+}
+
+@media(max-width:420px){
+    .tarjeta-reporte{grid-template-rows:18px 25px 18px minmax(0,1fr) 15px 21px;gap:2px;padding:6px}
+    .tarjeta-reporte.sin-adelanto{grid-template-rows:18px 25px 18px minmax(0,1fr) 15px}
+    .total-produccion-tarjeta-reporte,.resumen-finanzas-tarjeta-reporte{gap:1px}
+    .total-produccion-tarjeta-reporte .celda-resumen-reporte,.resumen-finanzas-tarjeta-reporte .celda-resumen-reporte{gap:1px}
+    .celda-resumen-reporte span{font-size:6px}
+    .celda-resumen-reporte strong{font-size:8px}
+}
+
+@page{size:A4 portrait;margin:10mm}
+@media print{
+    html,body{width:auto!important;min-width:0!important;margin:0!important;padding:0!important;background:#fff!important}
+    body>.encabezado,.panel-izquierdo{display:none!important}
+    .paneles-principales,.panel-central,.contenido-panel{display:block!important;width:auto!important;min-width:0!important;min-height:0!important;margin:0!important;padding:0!important;border:0!important;background:#fff!important;box-shadow:none!important}
+    .panel-central::after{display:none!important}
+    .seccion:not(#seccionReporte){display:none!important}
+    #seccionReporte{display:block!important;position:static!important;width:auto!important;margin:0!important;padding:0!important;border:0!important;outline:0!important;background:#fff!important;box-shadow:none!important}
+    #seccionReporte>.barra-reportes,#seccionReporte>.estado-reportes,
+    #panelClientesReporte>.barra-cabecera-reportes,
+    #panelClientesReporte>.controles-reportes,
+    #panelClientesReporte>.estado-reportes{display:none!important}
+    #panelListaCamionesReporte{display:none!important}
+    .pagina-reportes{display:grid!important;width:100%;height:277mm;min-height:277mm;grid-template-columns:repeat(2,85mm);grid-template-rows:repeat(5,53mm);gap:2mm;justify-content:center;align-content:center;margin:0;break-after:page;page-break-after:always}
+    .pagina-reportes:last-child{break-after:auto;page-break-after:auto}
+    .tarjeta-reporte{width:85mm;height:53mm;min-height:0;aspect-ratio:auto;grid-template-rows:4mm 7mm 4mm minmax(0,1fr) 4mm 9mm;gap:.6mm;padding:1mm;border:.25mm dotted #8eaa8d;border-radius:1.5mm;box-shadow:none;break-inside:avoid;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+    .tarjeta-reporte.sin-adelanto{grid-template-rows:4mm 7mm 4mm minmax(0,1fr) 4mm}
+    .marca-tarjeta-reporte{gap:1mm;font-size:7pt}
+    .marca-tarjeta-reporte img{width:4mm;height:4mm;flex-basis:4mm}
+    .periodo-tarjeta-reporte{border-radius:1mm}
+    .periodo-tarjeta-reporte strong{font-size:6pt}
+    .periodo-tarjeta-reporte span{font-size:5pt}
+    .cliente-tarjeta-reporte{font-size:5.5pt}
+    .calendario-tarjeta-reporte{gap:.5mm}
+    .dia-tarjeta-reporte{border-radius:.7mm;line-height:1}
+    .dia-tarjeta-reporte{gap:.25mm}
+    .dia-tarjeta-reporte strong{font-size:5.5pt;line-height:1.1}
+    .dia-tarjeta-reporte span,.dia-tarjeta-reporte small{font-size:4.2pt;line-height:1.1}
+    .dia-tarjeta-reporte b{font-size:6pt;line-height:1.1;white-space:nowrap}
+    .total-produccion-tarjeta-reporte{gap:.5mm}
+    .total-produccion-tarjeta-reporte .celda-resumen-reporte{border-radius:.7mm}
+    .total-produccion-tarjeta-reporte .celda-resumen-reporte{gap:.5mm}
+    .total-produccion-tarjeta-reporte .celda-resumen-reporte span{font-size:4pt}
+    .total-produccion-tarjeta-reporte .celda-resumen-reporte strong{font-size:4.8pt}
+    .resumen-finanzas-tarjeta-reporte{gap:.5mm}
+    .celda-resumen-reporte{border-radius:.7mm}
+    .resumen-finanzas-tarjeta-reporte .celda-resumen-reporte{gap:.5mm}
+    .celda-resumen-reporte span{font-size:4pt}
+    .celda-resumen-reporte strong{font-size:4.8pt}
+}
+
+.panel-registro-descarga .encabezado-quincenas{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.panel-registro-descarga .encabezado-quincenas h3{margin:0}
+.selector-camion-descarga{display:flex;align-items:center;gap:8px;color:#59685b;font-size:11px;font-weight:700}
+.selector-camion-descarga select{min-width:170px;height:34px;padding:0 9px;border:1px solid var(--borde);border-radius:7px;background:#fff;color:var(--texto);font:inherit}
+.cerrar-detalle-cliente-tablero:focus-visible{outline:2px solid #31844d;outline-offset:3px}
+.detalle-cliente-tablero{margin-top:18px;padding:16px;border:1px solid #e3ebe0;border-radius:10px;background:#f9fbf8}
+.detalle-cliente-tablero[hidden]{display:none!important}
+.cerrar-detalle-cliente-tablero{padding:7px 10px;border:1px solid #d8e3d5;border-radius:7px;background:#fff;color:#536456;font-size:10px;font-weight:700}
+.kpis-detalle-cliente-tablero{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:13px}
+.grafico-cliente-tablero{height:190px;margin-bottom:24px;background:#fff;border:1px solid #edf1eb;border-radius:8px}
+.tabla-diaria-cliente-tablero{max-height:320px;overflow:auto;border:1px solid #e5ece2;border-radius:8px;background:#fff}
+.tabla-diaria-cliente-tablero table{white-space:nowrap}
+.panel-clientes-tablero>.titulo-panel-tablero{align-items:center}
+@media(max-width:600px){.kpis-detalle-cliente-tablero{grid-template-columns:1fr}.detalle-cliente-tablero{padding:10px}}
