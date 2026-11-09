@@ -1,0 +1,885 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAMWEB - Administrador</title>
+    <link rel="stylesheet" href="estilos.css?v=20261109-mobile-menu">
+</head>
+<body>
+
+<header class="encabezado">
+    <div class="zona-logo">
+        <span id="logoInicial">LOGO</span>
+        <img id="logoEmpresa" alt="Logo de la empresa" hidden>
+    </div>
+
+    <div class="titulo-empresa">
+        <h1 id="nombreEmpresa">CAMWEB</h1>
+        <p>GERENTE</p>
+    </div>
+
+    <div class="marca-camweb">CAMWEB</div>
+</header>
+
+<main class="paneles-principales">
+
+    <aside class="panel-lateral panel-izquierdo">
+        <button type="button" class="boton-menu" id="botonMenu"
+                aria-controls="submenu" aria-expanded="false"
+                onclick="alternarMenu()">☰ MENÚ</button>
+
+        <div class="submenu" id="submenu" hidden>
+            <nav class="botones-centro" aria-label="Navegación principal">
+                <button type="button" onclick="abrirSeccion('vehiculos')"><span class="icono-navegacion">🚚</span><span class="texto-navegacion">VEHÍCULOS</span></button>
+                <button type="button" onclick="abrirSeccion('clientes')"><span class="icono-navegacion">👥</span><span class="texto-navegacion">CLIENTES</span></button>
+                <button type="button" onclick="abrirSeccion('produccion')"><img class="icono-navegacion icono-poronguito" src="imagenes/poronguito.svg" alt=""><span class="texto-navegacion">PRODUCCIÓN</span></button>
+                <button type="button" onclick="abrirSeccion('finanzas')"><span class="icono-navegacion">💰</span><span class="texto-navegacion">ADELANTOS Y DESCUENTOS</span></button>
+                <button type="button" onclick="abrirSeccion('puntosDescarga')"><span class="icono-navegacion">📍</span><span class="texto-navegacion">PUNTOS DE<br>DESCARGA</span></button>
+                <button type="button" onclick="abrirSeccion('reporte')"><span class="icono-navegacion">📄</span><span class="texto-navegacion">RECIBOS</span></button>
+                <button type="button" onclick="abrirSeccion('dashboard')"><span class="icono-navegacion">📊</span><span class="texto-navegacion">REPORTE</span></button>
+            </nav>
+        </div>
+        <div class="acciones-menu">
+            <button type="button" id="botonAjustes" aria-controls="submenuAjustes" aria-expanded="false" onclick="abrirVentanaAjustes()"><span class="icono-ajustes">⚙️</span> AJUSTES</button>
+            <div class="submenu-ajustes" id="submenuAjustes" hidden>
+                <button type="button" onclick="abrirAjuste('logo')"><span class="icono-ajustes">🖼️</span> SUBIR LOGO</button>
+                <button type="button" onclick="abrirAjuste('nombre')"><span class="icono-ajustes">🏢</span> TÍTULOS</button>
+                <button type="button" onclick="abrirAjuste('color')"><span class="icono-ajustes">🎨</span> COLOR</button>
+                <button type="button" onclick="abrirAjuste('usuario')"><span class="icono-ajustes">🔐</span> USUARIO Y CONTRASEÑA</button>
+            </div>
+            <button type="button" onclick="salirFlota()"><span class="icono-ajustes">🚪</span> SALIR</button>
+        </div>
+    </aside>
+
+    <section class="panel-central">
+
+        <div class="contenido-panel">
+
+            <!-- INICIO -->
+            <section class="seccion" id="inicio">
+                <h2>Panel del administrador</h2>
+                <p>Selecciona una opción para gestionar CAMWEB.</p>
+            </section>
+
+            <!-- VEHÍCULOS -->
+            <section class="seccion seccion-vehiculos"
+                     id="seccionVehiculos" hidden>
+
+                <div class="barra-vehiculos">
+                    <h2>🚚 VEHÍCULOS</h2>
+
+                    <button type="button"
+                            class="boton-registrar-camion"
+                            onclick="abrirVentanaVehiculos()">
+                        <span class="icono-mas">+</span>
+                        <span class="icono-camion-registro">🚚</span>
+                        <span>REGISTRAR CAMIÓN</span>
+                    </button>
+                </div>
+
+                <div id="listaVehiculos"></div>
+            </section>
+
+            <!-- REGISTRO DE CLIENTES -->
+            <section class="seccion seccion-clientes"
+                     id="seccionClientes" hidden>
+
+                <div id="panelListaCamionesClientes">
+                    <div class="barra-vehiculos barra-titulo-clientes-centrado">
+                        <h2>👥 REGISTRO DE CLIENTES</h2>
+                    </div>
+
+                    <div id="listaVehiculosClientes"></div>
+                </div>
+
+                <div id="panelClientesCamion" hidden>
+
+                    <div class="barra-clientes-camion">
+                        <button type="button"
+                                class="boton-volver-clientes"
+                                onclick="volverListaCamionesClientes()"
+                                title="Volver a la lista de camiones"
+                                aria-label="Volver a la lista de camiones">
+                                <svg class="icono-volver-doble" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M11 4 3 12l8 8v-5h10V9H11V4z M7 5 0 12l7 7v-4l-3-3 3-3V5z"/>
+                                </svg>
+                        </button>
+
+                        <div class="datos-cabecera-clientes">
+                            <h2 id="tituloClientesCamion">CLIENTES DEL CAMIÓN</h2>
+                            <p id="datosClientesCamion"></p>
+                        </div>
+                    </div>
+
+                    <form id="formularioClienteAdmin"
+                          class="formulario-cliente-admin">
+
+                        <input type="hidden" id="idClienteAdmin">
+
+                        <div class="campos-cliente-admin">
+                            <label>
+                                Nombre del cliente
+                                <input type="text"
+                                       id="nombreClienteAdmin"
+                                       placeholder="Nombre del cliente"
+                                       autocomplete="off"
+                                       required>
+                            </label>
+
+                            <label>
+                                Precio por litro (S/)
+                                <input type="number"
+                                       id="precioClienteAdmin"
+                                       min="0"
+                                       step="0.01"
+                                       inputmode="decimal"
+                                       required>
+                            </label>
+                        </div>
+
+                        <div class="acciones-formulario-cliente">
+                            <button type="submit"
+                                    class="boton-guardar-cliente"
+                                    id="botonGuardarClienteAdmin">
+                                GUARDAR
+                            </button>
+
+                            <button type="button"
+                                    class="boton-cancelar-edicion"
+                                    id="botonCancelarEdicionCliente"
+                                    onclick="cancelarEdicionClienteAdmin()"
+                                    hidden>
+                                CANCELAR EDICIÓN
+                            </button>
+                        </div>
+
+                        <p class="mensaje-clientes-admin"
+                           id="mensajeClienteAdmin"
+                           aria-live="polite"></p>
+                    </form>
+
+                    <div class="zona-busqueda-clientes">
+                        <button type="button"
+                                class="boton-microfono-clientes"
+                                id="botonMicrofonoClientes"
+                                onclick="alternarVozClientesAdmin()"
+                                title="Buscar por voz"
+                                aria-label="Buscar clientes por voz">
+                            🎙️
+                        </button>
+
+                        <div class="busqueda-clientes">
+                            <input type="search"
+                                   id="buscarClienteAdmin"
+                                   placeholder="Buscar cliente..."
+                                   autocomplete="off"
+                                   aria-label="Buscar cliente">
+
+                            <button type="button"
+                                    class="boton-lupa-clientes"
+                                    onclick="buscarClientesAdmin()"
+                                    title="Buscar"
+                                    aria-label="Buscar">
+                                <svg viewBox="0 0 24 24"
+                                     width="21"
+                                     height="21"
+                                     aria-hidden="true">
+                                    <circle cx="10.8" cy="10.8" r="6.8"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="2.2"/>
+                                    <path d="M16 16 L21 21"
+                                          fill="none"
+                                          stroke="currentColor"
+                                          stroke-width="2.2"
+                                          stroke-linecap="round"/>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <p class="estado-voz-clientes"
+                           id="estadoVozClientesAdmin"
+                           aria-live="polite"></p>
+                    </div>
+
+                    <div class="encabezado-lista-clientes">
+                        <h3>CLIENTES REGISTRADOS</h3>
+                        <span id="totalClientesAdmin">0 clientes</span>
+                    </div>
+
+                    <div id="listaClientesAdmin"
+                         class="lista-clientes-admin"></div>
+                </div>
+            </section>
+
+            <!-- PRODUCCIÓN -->
+            <section class="seccion seccion-produccion"
+                     id="seccionProduccion" hidden>
+
+                <div id="panelListaCamionesProduccion">
+                    <div class="barra-vehiculos">
+                        <h2><img class="icono-poronguito-produccion" src="imagenes/poronguito.svg" alt=""> PRODUCCIÓN</h2>
+                    </div>
+
+                    <div id="listaVehiculosProduccion"></div>
+                </div>
+
+                <div id="panelClientesProduccion" hidden>
+
+                    <div class="barra-clientes-camion">
+                        <button type="button"
+                                class="boton-volver-clientes"
+                                onclick="volverListaCamionesProduccion()"
+                                title="Volver a los camiones"
+                                aria-label="Volver a los camiones">
+                                <svg class="icono-volver-doble" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M11 4 3 12l8 8v-5h10V9H11V4z M7 5 0 12l7 7v-4l-3-3 3-3V5z"/>
+                                </svg>
+                        </button>
+
+                        <div class="datos-cabecera-clientes">
+                            <h2 id="tituloClientesProduccion">
+                                CLIENTES DEL CAMIÓN
+                            </h2>
+                            <p id="datosClientesProduccion"></p>
+                        </div>
+                    </div>
+
+                    <!-- BÚSQUEDA CENTRADA POR VOZ Y TEXTO -->
+                    <div class="zona-busqueda-clientes zona-busqueda-produccion">
+                        <button type="button"
+                                class="boton-microfono-clientes"
+                                id="botonMicrofonoProduccion"
+                                onclick="alternarVozProduccion()"
+                                title="Buscar cliente por voz"
+                                aria-label="Buscar cliente por voz">
+                            🎙️
+                        </button>
+
+                        <div class="busqueda-clientes">
+                            <input type="search"
+                                   id="buscarClienteProduccion"
+                                   placeholder="Buscar cliente..."
+                                   autocomplete="off"
+                                   aria-label="Buscar cliente en producción">
+
+                            <button type="button"
+                                    class="boton-lupa-clientes"
+                                    onclick="mostrarClientesProduccion()"
+                                    title="Buscar"
+                                    aria-label="Buscar">
+                                <svg viewBox="0 0 24 24"
+                                     width="21"
+                                     height="21"
+                                     aria-hidden="true">
+                                    <circle cx="10.8" cy="10.8" r="6.8"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="2.2"/>
+                                    <path d="M16 16 L21 21"
+                                          fill="none"
+                                          stroke="currentColor"
+                                          stroke-width="2.2"
+                                          stroke-linecap="round"/>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div class="total-general-produccion" aria-live="polite">
+                            <span>TL</span>
+                            <strong id="totalLitrosGeneralProduccion">0 L</strong>
+                        </div>
+
+                        <p class="estado-voz-clientes"
+                           id="estadoVozProduccion"
+                           aria-live="polite"></p>
+                    </div>
+
+
+
+                    <div class="encabezado-lista-clientes">
+                        <h3>CLIENTES</h3>
+                        <span id="totalClientesProduccion">0 clientes</span>
+                    </div>
+
+                    <div id="listaClientesProduccion"
+                         class="lista-clientes-admin"></div>
+                </div>
+
+                <!-- TABLAS DE PRODUCCIÓN DEL CLIENTE -->
+                <div id="panelTablasProduccion"
+                     class="panel-tablas-produccion"
+                     hidden>
+
+                    <div class="barra-clientes-camion barra-tablas-produccion">
+
+                        <button type="button"
+                                class="boton-volver-clientes"
+                                onclick="volverListaClientesProduccion()"
+                                title="Volver a los clientes"
+                                aria-label="Volver a la lista de clientes">
+                            <svg class="icono-volver-doble" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M11 4 3 12l8 8v-5h10V9H11V4z M7 5 0 12l7 7v-4l-3-3 3-3V5z"/>
+                            </svg>
+                        </button>
+
+                        <div class="datos-cabecera-clientes">
+                            <h2>PRODUCCIÓN DEL CLIENTE</h2>
+                            <p id="datosCabeceraTablasProduccion">
+                                Registro de litros por quincena
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- TABLAS DE QUINCENAS Y TARJETA DE TOTAL -->
+                    <div class="contenido-tablas-produccion">
+
+                        <aside class="identificacion-cliente-produccion">
+                            <span class="etiqueta-cliente-produccion">CLIENTE</span>
+                            <h3 id="nombreClienteTablasProduccion">Cliente</h3>
+                        </aside>
+
+                        <!-- TABLAS EN EL CENTRO -->
+                        <div class="zona-tablas-quincenas">
+
+                            <div class="encabezado-quincenas">
+                                <h3>REGISTRO DE LECHE</h3>
+                                <p>
+                                    Ingresa los litros debajo de la fecha y el día correspondiente.
+                                </p>
+                            </div>
+
+                            <div id="contenedorTablasQuincenas"
+                                 class="contenedor-tablas-quincenas">
+
+                                <p class="mensaje-sin-tablas">
+                                    Las tablas de producción aparecerán aquí.
+                                </p>
+
+                            </div>
+
+                            <!-- HISTORIAL DE QUINCENAS ANTERIORES -->
+                            <section class="historial-produccion"
+                                     id="seccionHistorialProduccion"
+                                     hidden>
+
+                                <div class="encabezado-historial-produccion">
+                                    <h3>HISTORIAL DE PRODUCCIÓN</h3>
+                                    <p>
+                                        Consulta las quincenas anteriores de este cliente.
+                                    </p>
+                                </div>
+
+                                <div id="contenedorHistorialProduccion">
+                                    <p class="mensaje-sin-tablas">
+                                        Todavía no hay quincenas anteriores.
+                                    </p>
+                                </div>
+
+                            </section>
+                        </div>
+
+                        <!-- TOTAL DE LA QUINCENA VIGENTE -->
+                        <aside class="resumen-total-produccion">
+
+                            <div class="tarjeta-total-produccion">
+                                <span class="etiqueta-total-produccion">
+                                    TOTAL DE LITROS
+                                </span>
+
+                                <strong id="totalLitrosProduccion">
+                                    0.00
+                                </strong>
+
+                                <span class="unidad-total-produccion">
+                                    litros
+                                </span>
+                            </div>
+
+                            <p id="periodoTotalProduccion"
+                               class="periodo-total-produccion">
+                                Quincena actual
+                            </p>
+
+                            <div class="acciones-tabla-produccion">
+
+                                <button type="button"
+                                        class="boton-editar-produccion"
+                                        id="botonEditarProduccion"
+                                        onclick="alternarEdicionProduccion()"
+                                        title="Editar producción"
+                                        aria-label="Habilitar edición de producción">
+                                    ✏️
+                                </button>
+
+                                <button type="button"
+                                        class="boton-guardar-produccion"
+                                        id="botonGuardarProduccion"
+                                        onclick="guardarProduccionCliente()">
+                                    GUARDAR
+                                </button>
+
+                            </div>
+
+                            <p id="mensajeGuardarProduccion"
+                               class="mensaje-guardar-produccion"
+                               aria-live="polite"></p>
+
+                        </aside>
+
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- FINANZAS: selección de camiones, con diseño de Producción -->
+            <section class="seccion seccion-produccion" id="seccionFinanzas" hidden>
+                <div id="panelListaCamionesFinanzas">
+                    <div class="barra-vehiculos">
+                        <h2>💰 ADELANTOS Y DESCUENTOS</h2>
+                    </div>
+                    <div id="listaVehiculosFinanzas"></div>
+                </div>
+                <div id="panelClientesFinanzas" hidden>
+                    <div class="barra-clientes-camion">
+                        <button type="button" class="boton-volver-clientes" onclick="volverListaCamionesFinanzas()" title="Volver a los camiones" aria-label="Volver a los camiones">
+                            <svg class="icono-volver-doble" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4 3 12l8 8v-5h10V9H11V4z M7 5 0 12l7 7v-4l-3-3 3-3V5z"/></svg>
+                        </button>
+                        <div class="datos-cabecera-clientes">
+                            <h2>ADELANTOS Y DESCUENTOS</h2>
+                            <p id="datosCamionFinanzas"></p>
+                        </div>
+                    </div>
+                    <div class="zona-busqueda-clientes zona-busqueda-produccion">
+                        <button type="button" class="boton-microfono-clientes" id="botonMicrofonoFinanzas" onclick="alternarVozFinanzas()" title="Buscar cliente por voz" aria-label="Buscar cliente por voz">🎙️</button>
+                        <div class="busqueda-clientes">
+                            <input type="search" id="buscarClienteFinanzas" placeholder="Buscar cliente..." autocomplete="off" aria-label="Buscar cliente en Finanzas">
+                            <button type="button" class="boton-lupa-clientes" onclick="mostrarClientesFinanzas()" title="Buscar" aria-label="Buscar">
+                                <svg viewBox="0 0 24 24" width="21" height="21" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M16 16 L21 21" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+                            </button>
+                        </div>
+                        <p class="estado-voz-clientes" id="estadoVozFinanzas" aria-live="polite"></p>
+                    </div>
+                    <div class="encabezado-lista-clientes">
+                        <h3>CLIENTES</h3>
+                        <span id="totalClientesFinanzas">0 clientes</span>
+                    </div>
+                    <div id="listaClientesFinanzas" class="lista-clientes-admin"></div>
+                </div>
+                <div id="panelDetalleFinanzas" hidden>
+                    <div class="barra-clientes-camion">
+                        <button type="button" class="boton-volver-clientes" onclick="volverClientesFinanzas()" title="Volver a clientes" aria-label="Volver a clientes">
+                            <svg class="icono-volver-doble" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4 3 12l8 8v-5h10V9H11V4z M7 5 0 12l7 7v-4l-3-3 3-3V5z"/></svg>
+                        </button>
+                        <div class="datos-cabecera-clientes">
+                            <h2>ADELANTOS Y DESCUENTOS</h2>
+                            <p id="datosClienteFinanzas"></p>
+                        </div>
+                    </div>
+                    <form id="formularioAdelantoFinanzas" class="formulario-adelanto-finanzas">
+                        <label class="campo-adelanto-finanzas">REGISTRAR ADELANTO<input type="number" id="montoAdelantoFinanzas" min="0.01" step="0.01" placeholder="Monto en soles" required></label>
+                        <label class="campo-adelanto-finanzas">TIPO DE DESCUENTO<select id="tipoDescuentoFinanzas" required><option value="fijo">Fijo</option><option value="variable">Variable</option></select></label>
+                        <label class="campo-adelanto-finanzas" id="campoQuincenasFinanzas">NÚMERO DE QUINCENAS<input type="number" id="quincenasAdelantoFinanzas" min="1" max="120" step="1" placeholder="Cantidad" required></label>
+                        <div class="acciones-adelanto-finanzas">
+                            <button type="submit" class="boton-guardar-adelanto-finanzas" id="botonGuardarAdelantoFinanzas">GUARDAR</button>
+                        </div>
+                        <p id="mensajeAdelantoFinanzas" aria-live="polite"></p>
+                    </form>
+                    <div class="panel-registro-descuento-finanzas" id="panelRegistroDescuentoFinanzas">
+                        <div class="campo-descuento-finanzas">
+                            <label for="montoDescuentoFinanzas">REGISTRAR DESCUENTO</label>
+                            <input type="number" id="montoDescuentoFinanzas" min="0" step="0.01" placeholder="Cantidad" aria-label="Cantidad del descuento">
+                        </div>
+                        <div class="acciones-descuento-finanzas">
+                            <button type="button" id="botonGuardarDescuentoFinanzas" class="boton-guardar-descuento-finanzas">GUARDAR</button>
+                            <button type="button" id="botonEditarFinanzas" class="boton-icono-finanzas" title="Editar adelanto" aria-label="Editar adelanto">✏️</button>
+                            <button type="button" id="botonEliminarFinanzas" class="boton-icono-finanzas boton-eliminar-finanzas" title="Eliminar adelanto" aria-label="Eliminar adelanto">🗑️</button>
+                        </div>
+                    </div>
+                    <div id="tablasAdelantosFinanzas" class="tablas-adelantos-finanzas"></div>
+                </div>
+            </section>
+
+            <!-- PUNTOS DE DESCARGA -->
+            <section class="seccion seccion-puntos-descarga" id="seccionPuntosDescarga" hidden>
+                <h2 class="titulo-puntos-descarga">Puntos de descarga</h2>
+                <button type="button" class="boton-proveedor-descarga" id="botonProveedorDescarga" aria-expanded="false" aria-controls="panelProveedoresDescarga">
+                    <span class="icono-proveedor-descarga" aria-hidden="true">&#127978;</span>
+                    <span>PROVEEDOR</span>
+                </button>
+                <div class="zona-busqueda-clientes zona-busqueda-proveedores">
+                    <button type="button" class="boton-microfono-clientes" id="botonMicrofonoProveedores" title="Buscar proveedores por voz" aria-label="Buscar proveedores por voz">🎙️</button>
+                    <div class="busqueda-clientes">
+                        <input type="search" id="buscarProveedorDescarga" placeholder="Buscar proveedor..." autocomplete="off" aria-label="Buscar proveedor">
+                        <button type="button" class="boton-lupa-clientes" id="botonBuscarProveedorDescarga" title="Buscar" aria-label="Buscar proveedor">
+                            <svg viewBox="0 0 24 24" width="21" height="21" aria-hidden="true">
+                                <circle cx="10.8" cy="10.8" r="6.8" fill="none" stroke="currentColor" stroke-width="2.2"/>
+                                <path d="M16 16 L21 21" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <p class="estado-voz-clientes" id="estadoVozProveedores" aria-live="polite"></p>
+                </div>
+                <div class="encabezado-lista-clientes encabezado-lista-proveedores-descarga">
+                    <h3>PROVEEDORES REGISTRADOS</h3>
+                    <span id="totalProveedoresDescarga">0 proveedores</span>
+                </div>
+                <div class="lista-proveedores-resumen-descarga" id="listaProveedoresResumenDescarga" aria-live="polite"></div>
+                <div class="panel-proveedores-descarga" id="panelProveedoresDescarga" hidden>
+                    <button type="button" class="boton-volver-clientes" id="botonVolverProveedores" aria-label="Volver a Puntos de descarga" title="Volver">
+                        <svg class="icono-volver-doble" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M11 4 3 12l8 8v-5h10V9H11V4z M7 5 0 12l7 7v-4l-3-3 3-3V5z"/>
+                        </svg>
+                    </button>
+                    <h3 class="subtitulo-proveedores-descarga">REGISTRAR PROVEEDOR</h3>
+                    <form class="formulario-cliente-admin formulario-proveedor-descarga" id="formularioProveedorDescarga">
+                        <input type="hidden" id="idProveedorDescarga">
+                        <div class="campos-cliente-admin campos-proveedor-descarga">
+                            <label>Nombre del proveedor
+                                <input type="text" id="nombreProveedorDescarga" placeholder="Nombre del proveedor" autocomplete="off" required>
+                            </label>
+                            <label>Precio (S/)
+                                <input type="number" id="precioProveedorDescarga" min="0" step="0.01" inputmode="decimal" required>
+                            </label>
+                        </div>
+                        <div class="acciones-formulario-cliente acciones-formulario-proveedor">
+                            <button type="submit" class="boton-guardar-cliente boton-guardar-proveedor" id="botonGuardarProveedor">GUARDAR</button>
+                            <button type="button" class="boton-cancelar-proveedor" id="botonCancelarProveedor" hidden>CANCELAR EDICIÓN</button>
+                        </div>
+                        <p class="mensaje-proveedor-descarga" id="mensajeProveedorDescarga" aria-live="polite"></p>
+                    </form>
+                    <div class="encabezado-lista-clientes encabezado-lista-proveedores-descarga">
+                        <h3>LISTA DE PROVEEDORES</h3>
+                    </div>
+                    <div class="lista-proveedores-descarga" id="listaProveedoresDescarga" aria-live="polite"></div>
+                </div>
+                <div class="panel-registro-descarga" id="panelRegistroDescargaProveedor" hidden>
+                    <div class="barra-clientes-camion barra-tablas-produccion">
+                        <button type="button" class="boton-volver-clientes" id="botonVolverRegistroDescarga" title="Volver a proveedores" aria-label="Volver a proveedores">
+                            <svg class="icono-volver-doble" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4 3 12l8 8v-5h10V9H11V4z M7 5 0 12l7 7v-4l-3-3 3-3V5z"/></svg>
+                        </button>
+                        <div class="datos-cabecera-clientes">
+                            <h2>REGISTRO DE DESCARGA</h2>
+                            <p id="datosCabeceraProveedorDescarga"></p>
+                        </div>
+                    </div>
+                    <div class="contenido-tablas-produccion">
+                        <aside class="identificacion-cliente-produccion">
+                            <div id="listaCamionesResumenDescarga" class="lista-camiones-resumen-descarga"></div>
+                        </aside>
+                        <div class="zona-tablas-quincenas">
+                            <div class="encabezado-quincenas">
+                                <h3>REGISTRO DE DESCARGA</h3>
+                                <p>Selecciona el camión y registra sus litros descargados por día.</p>
+                                <label class="selector-camion-descarga">Camión<select id="camionDescargaSeleccionado" aria-label="Camión para registrar las descargas"></select></label>
+                            </div>
+                            <div id="contenedorTablasDescarga" class="contenedor-tablas-quincenas"></div>
+                            <section class="historial-produccion" id="historialDescargaProveedor" hidden>
+                                <div class="encabezado-historial-produccion">
+                                    <h3>HISTORIAL DE DESCARGAS</h3>
+                                    <p>Quincenas anteriores de este proveedor.</p>
+                                </div>
+                                <div id="contenedorHistorialDescarga"></div>
+                            </section>
+                        </div>
+                        <aside class="resumen-total-produccion">
+                            <div class="datos-proveedor-resumen-descarga">
+                                <strong id="nombreProveedorResumenDescarga"></strong>
+                                <span id="precioProveedorResumenDescarga"></span>
+                            </div>
+                            <div class="tarjeta-total-produccion">
+                                <span class="etiqueta-total-produccion">TOTAL DE LITROS</span>
+                                <strong id="totalLitrosDescargaProveedor">0.00</strong>
+                                <span class="unidad-total-produccion">litros</span>
+                            </div>
+                            <p id="periodoTotalDescargaProveedor" class="periodo-total-produccion">Quincena actual</p>
+                            <div class="acciones-tabla-produccion">
+                                <button type="button" class="boton-editar-produccion" id="botonEditarDescargaProveedor" title="Editar descarga" aria-label="Habilitar edición de descarga">✏️</button>
+                                <button type="button" class="boton-guardar-produccion" id="botonGuardarDescargaProveedor" disabled>GUARDAR</button>
+                            </div>
+                            <p id="mensajeDescargaProveedor" class="mensaje-guardar-produccion" aria-live="polite"></p>
+                        </aside>
+                    </div>
+                </div>
+            </section>
+
+            <!-- REPORTE -->
+            <section class="seccion seccion-reportes" id="seccionReporte" hidden>
+                <div class="barra-reportes">
+                    <div class="titulo-reportes">
+                        <h2>RECIBOS</h2>
+                    </div>
+                </div>
+                <div id="panelListaCamionesReporte">
+                    <div class="lista-camiones-reportes" id="listaVehiculosReporte"></div>
+                </div>
+                <div id="panelClientesReporte" hidden>
+                    <div class="barra-clientes-camion barra-cabecera-reportes">
+                        <button type="button" class="boton-volver-clientes" id="botonVolverCamionesReporte" title="Volver a camiones" aria-label="Volver a camiones">
+                            <svg class="icono-volver-doble" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4 3 12l8 8v-5h10V9H11V4z M7 5 0 12l7 7v-4l-3-3 3-3V5z"/></svg>
+                        </button>
+                        <div class="datos-cabecera-clientes">
+                            <h2 id="tituloClientesReporte">CLIENTES DEL CAMIÓN</h2>
+                            <p id="datosClientesReporte"></p>
+                        </div>
+                    </div>
+                    <div class="controles-reportes">
+                        <button type="button" class="boton-archivo-reportes" id="botonArchivoReportes" title="Archivo" aria-label="Archivo" aria-expanded="false" aria-controls="panelArchivoReportes">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z M14 3v5h5 M9 12h6 M9 16h6"/></svg>
+                        </button>
+                        <div class="panel-archivo-reportes" id="panelArchivoReportes" hidden>
+                            <div class="lista-archivo-reportes" id="listaArchivoReportes"></div>
+                        </div>
+                        <input type="hidden" id="mesReporte">
+                        <input type="hidden" id="quincenaReporte">
+                        <button type="button" class="boton-imprimir-reportes" id="botonImprimirReportes" title="Descargar reporte" aria-label="Descargar reporte">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v11m0 0 4-4m-4 4-4-4M5 17v3h14v-3"/></svg>
+                        </button>
+                        <span class="total-produccion-reportes" id="totalLitrosReportes" aria-live="polite">TP = 0 L</span>
+                    </div>
+                    <div class="contenedor-reportes" id="contenedorReportes" aria-live="polite"></div>
+                </div>
+            </section>
+
+            <!-- DASHBOARD -->
+            <section class="seccion tablero-analitico" id="seccionDashboard" hidden>
+                <header class="encabezado-tablero">
+                    <div>
+                        <h2>Reporte de producción</h2>
+                    </div>
+                </header>
+                <div class="filtros-tablero" aria-label="Filtros del reporte">
+                    <label>Tipo de reporte<select id="tableroTipoReporte"><option value="produccion">Producción</option><option value="descuentos">Descuentos</option><option value="adelantos">Adelantos</option><option value="ganancias">Ganancias</option><option value="perdidas">Pérdida</option></select></label>
+                    <label>Camión<select id="tableroCamion"><option value="todos">Todos los camiones</option></select></label>
+                    <label><span id="etiquetaFiltroClienteTablero">Clientes</span><select id="tableroCliente"><option value="todos">Todos los clientes</option></select></label>
+                    <label>Ver por<select id="tableroAgrupacion"><option value="dia" selected>Día</option><option value="quincena">Quincena</option><option value="mes">Mes</option><option value="anio">Año</option></select></label>
+                </div>
+                <div class="kpis-tablero" id="kpisTablero" aria-live="polite"></div>
+                <div class="rejilla-graficos-tablero">
+                    <article class="panel-grafico-tablero panel-tendencia">
+                        <div class="titulo-panel-tablero"><div><h3>Producción por cliente</h3><p>Litros por periodo</p></div></div>
+                        <div id="graficoTendenciaTablero" class="grafico-columnas-tablero"></div>
+                    </article>
+                    <article class="panel-grafico-tablero panel-comparacion-camiones">
+                        <div class="titulo-panel-tablero"><div><h3 id="tituloComparacionTablero">Camiones</h3><p id="subtituloComparacionTablero">Litros recogidos / descargados</p></div><div class="leyenda-tablero" id="leyendaMetricasCamionTablero"><span><i class="punto-recogido"></i>Recogido</span><span><i class="punto-descargado"></i>Descargado</span></div></div>
+                        <div class="comparacion-con-leyenda">
+                            <div class="leyenda-tablero leyenda-clientes-comparacion" id="leyendaClientesTendenciaTablero"></div>
+                            <div id="graficoCamionesTablero" class="grafico-camiones-tablero"></div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+        </div>
+    </section>
+
+</main>
+
+<!-- VENTANA LATERAL DE CONFIGURACIÓN -->
+<div class="fondo-ventana" id="fondoVentana" hidden>
+    <section class="ventana-lateral"
+             role="dialog"
+             aria-modal="true">
+
+        <div class="cabecera-ventana">
+            <h2 id="tituloVentana">CONFIGURACIÓN</h2>
+
+            <button type="button"
+                    class="boton-cerrar"
+                    onclick="cerrarVentana()"
+                    aria-label="Cerrar">×</button>
+        </div>
+
+        <!-- REGISTRO DE VEHÍCULOS -->
+        <section id="vistaVehiculos" hidden>
+            <form id="formularioVehiculo" class="formulario-ventana">
+                <input type="hidden" id="idVehiculo">
+
+                <label>
+                    Nombre del chofer
+                    <input type="text" id="nombreChofer"
+                           placeholder="Nombre del chofer" required>
+                </label>
+
+                <label>
+                    Ayudante 1 (opcional)
+                    <input type="text" id="nombreAyudante"
+                           placeholder="Nombre del ayudante">
+                </label>
+
+                <label>
+                    Ayudante 2 (opcional)
+                    <input type="text" id="nombreAyudante2"
+                           placeholder="Nombre del ayudante">
+                </label>
+
+                <label>
+                    Placa
+                    <input type="text" id="placaVehiculo"
+                           placeholder="Ej. ABC-123" required>
+                </label>
+
+                <label>
+                    Ruta
+                    <input type="text" id="rutaVehiculo"
+                           placeholder="Ej. Cajamarca - Baños del Inca" required>
+                </label>
+
+                <label>
+                    Usuario
+                    <input type="text" id="usuarioVehiculo"
+                           placeholder="Usuario del vehículo"
+                           autocomplete="username" required>
+                </label>
+
+                <label>
+                    Contraseña
+                    <span class="campo-contrasena">
+                        <input type="password" id="contrasenaVehiculo"
+                               placeholder="Contraseña del vehículo"
+                               autocomplete="new-password" required>
+                        <button type="button" class="boton-ver-contrasena" id="botonVerContrasenaVehiculo" aria-label="Mostrar contraseña" title="Mostrar contraseña">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+                        </button>
+                    </span>
+                </label>
+
+                <p class="mensaje-ventana" id="mensajeVehiculo"
+                   aria-live="polite"></p>
+
+                <div class="acciones">
+                    <button type="submit" class="boton-guardar">GUARDAR</button>
+                    <button type="button" class="boton-atras"
+                            onclick="cerrarVentana()">ATRÁS</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- COLOR DE LA INTERFAZ -->
+        <section id="vistaColor" hidden>
+            <form id="formularioColor" class="formulario-ventana formulario-selector-color">
+                <input type="hidden" id="colorEmpresaInput" value="#246b38">
+                <div class="area-color-seleccion" id="areaColorSeleccion" role="slider" tabindex="0" aria-label="Intensidad del color">
+                    <span class="indicador-area-color" id="indicadorAreaColor"></span>
+                </div>
+                <input class="control-tono-color" type="range" id="tonoColor" min="0" max="359" value="120" aria-label="Tono del color">
+                <div class="controles-rgb-color">
+                    <span class="muestra-color-seleccion" id="muestraColorSeleccion" aria-label="Color seleccionado"></span>
+                    <label>R<input type="number" id="valorRojoColor" min="0" max="255" value="55" aria-label="Rojo"></label>
+                    <label>G<input type="number" id="valorVerdeColor" min="0" max="255" value="107" aria-label="Verde"></label>
+                    <label>B<input type="number" id="valorAzulColor" min="0" max="255" value="56" aria-label="Azul"></label>
+                </div>
+                <p class="mensaje-ventana" id="mensajeColor" aria-live="polite"></p>
+                <div class="acciones">
+                    <button type="submit" class="boton-guardar">GUARDAR</button>
+                    <button type="button" class="boton-atras" onclick="cerrarVentana()">CERRAR</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- LOGO -->
+        <section id="vistaLogo" hidden>
+            <form id="formularioLogo" class="formulario-ventana">
+                <div class="vista-logo">
+                    <img id="vistaPreviaLogo" alt="Vista previa del logo" hidden>
+                    <span id="textoVistaLogo">Selecciona una imagen</span>
+                </div>
+
+                <label>
+                    Seleccionar fotografía
+                    <input type="file" id="archivoLogo" accept="image/*" required>
+                </label>
+
+                <p class="mensaje-ventana" id="mensajeLogo"
+                   aria-live="polite"></p>
+
+                <div class="acciones">
+                    <button type="submit" class="boton-guardar">GUARDAR</button>
+                    <button type="button" class="boton-atras"
+                            onclick="abrirAjuste('menu')">ATRÁS</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- NOMBRE DE LA EMPRESA -->
+        <section id="vistaNombre" hidden>
+            <form id="formularioNombre" class="formulario-ventana">
+                <label>
+                    Título
+                    <input type="text" id="nombreEmpresaInput" required>
+                </label>
+
+                <p class="mensaje-ventana" id="mensajeNombre"
+                   aria-live="polite"></p>
+
+                <div class="acciones">
+                    <button type="submit" class="boton-guardar">GUARDAR</button>
+                    <button type="button" class="boton-atras"
+                            onclick="abrirAjuste('menu')">ATRÁS</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- USUARIO Y CONTRASEÑA -->
+        <section id="vistaUsuario" hidden>
+            <form id="formularioUsuario" class="formulario-ventana">
+                <label>
+                    Usuario
+                    <input type="text" id="usuarioAdministrador" required>
+                </label>
+
+                <label>
+                    Contraseña
+                    <span class="campo-contrasena">
+                        <input type="password" id="contrasenaAdministrador"
+                               autocomplete="current-password">
+                        <button type="button" class="boton-ver-contrasena" id="botonVerContrasenaAdministrador" aria-label="Mostrar contraseña" title="Mostrar contraseña">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+                        </button>
+                    </span>
+                </label>
+
+                <p class="mensaje-ventana" id="mensajeUsuario"
+                   aria-live="polite"></p>
+
+                <div class="acciones">
+                    <button type="submit" class="boton-guardar">GUARDAR</button>
+                    <button type="button" class="boton-atras"
+                            onclick="abrirAjuste('menu')">ATRÁS</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- INDICADORES DEL DASHBOARD -->
+        <section id="vistaDashboard" hidden>
+            <div class="indicadores">
+                <article>
+                    <span>Vehículos</span>
+                    <strong id="totalVehiculos">0</strong>
+                </article>
+                <article>
+                    <span>Activos</span>
+                    <strong id="totalActivos">0</strong>
+                </article>
+                <article>
+                    <span>Inactivos</span>
+                    <strong id="totalInactivos">0</strong>
+                </article>
+            </div>
+
+            <button type="button" class="boton-atras"
+                    onclick="cerrarVentana()">ATRÁS</button>
+        </section>
+
+    </section>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../SUPABASE/supabase-client.js"></script>
+<script src="../SUPABASE/supabase-data-bridge.js?v=20261109-sync"></script>
+<script src="script.js?v=20261109-sync"></script>
+</body>
+</html>
+
+
