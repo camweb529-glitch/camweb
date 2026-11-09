@@ -192,7 +192,7 @@ function normalizarBusquedaAdmin(texto) {
 }
 
 /* =========================================================
-   SALIR Y REGRESAR A LA FLOTA
+   SALIR Y REGRESAR A VEHICULOS
 ========================================================= */
 
 function salirFlota() {
@@ -201,35 +201,8 @@ function salirFlota() {
 
     cerrarVentana();
 
-    if (document.referrer) {
-        try {
-            const paginaAnterior = new URL(
-                document.referrer,
-                window.location.href
-            );
-
-            const rutaAnterior = paginaAnterior.pathname.toLowerCase();
-
-            if (
-                rutaAnterior.endsWith("/flota/index.html") ||
-                rutaAnterior.endsWith("/flota/") ||
-                rutaAnterior.endsWith("/flota")
-            ) {
-                window.history.back();
-                return;
-            }
-        } catch (error) {
-            console.warn(
-                "No se pudo identificar la página anterior.",
-                error
-            );
-        }
-    }
-
-    window.location.href = new URL(
-        URL_FLOTA,
-        window.location.href
-    ).href;
+    window.location.href =
+        "https://camweb529-glitch.github.io/camweb/VEHICULOS/index.html";
 }
 
 /* =========================================================
