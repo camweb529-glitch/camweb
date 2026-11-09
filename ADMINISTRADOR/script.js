@@ -22,7 +22,7 @@ const CLAVE_PROVEEDORES_DESCARGA = "camwebProveedoresDescarga";
 const CLAVE_REGISTROS_DESCARGA = "camwebRegistrosDescarga";
 const CLAVE_LIMPIEZA_FINANZAS_INICIAL = "camwebFinanzasSaldosInicializados";
 
-const URL_FLOTA = "../vehiculos/index.html";
+const URL_FLOTA = "../VEHICULOS/index.html";
 
 let logoTemporal = null;
 let estadoSelectorColor = { h: 120, s: 0.5, v: 0.42 };
