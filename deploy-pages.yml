@@ -2,7 +2,7 @@ name: Publicar CAMWEB en GitHub Pages
 
 on:
   push:
-    branches: [principal]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
