@@ -27,7 +27,7 @@ const valoresTemporalesDescarga = new Map();
 let proveedorDescargaFlota = null;
 let vehiculoAccesoPendiente = null;
 
-const URL_ADMINISTRADOR = "../ADMINISTRADOR/index.html";
+const URL_ADMINISTRADOR = "../administrador/index.html";
 
 function mezclarColorFlota(color, mezcla, proporcion) {
     const canal = (hex, indice) => parseInt(hex.slice(indice, indice + 2), 16);
