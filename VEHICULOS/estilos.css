@@ -1,0 +1,671 @@
+
+/* ==========================================
+   CAMWEB - FLOTA DE VEHÍCULOS
+========================================== */
+
+:root {
+    --verde-oscuro: #285832;
+    --verde-principal: #246b38;
+    --verde-lateral: #285832;
+    --verde-medio: #8da875;
+    --verde-claro: #eef4eb;
+    --verde-fondo: #e3eee0;
+    --blanco: #ffffff;
+    --texto: #243521;
+    --borde: #c9d8c4;
+    --gris: #e4e8e1;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--texto);
+    background: var(--blanco);
+}
+
+/* ==========================================
+   ENCABEZADO
+========================================== */
+
+.encabezado {
+    width: 100%;
+    min-height: 155px;
+    display: grid;
+    grid-template-columns: 160px minmax(0, 1fr) 160px;
+    align-items: center;
+    gap: 20px;
+    padding: 18px 30px;
+    background: var(--verde-claro);
+    border-bottom: 5px solid var(--verde-oscuro);
+}
+
+/* LOGO */
+
+.logo-empresa {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.marco-logo {
+    width: 125px;
+    height: 105px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: var(--blanco);
+    border: 2px dashed var(--verde-principal);
+    border-radius: 12px;
+    color: var(--verde-oscuro);
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.marco-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.marco-logo img[hidden] {
+    display: none !important;
+}
+
+/* TÍTULOS CENTRALES */
+
+.titulo-empresa {
+    min-width: 0;
+    text-align: center;
+}
+
+.titulo-empresa h1 {
+    color: var(--verde-oscuro);
+    font-size: clamp(19px, 2.3vw, 30px);
+    font-weight: bold;
+    margin-bottom: 12px;
+    overflow-wrap: anywhere;
+}
+
+.titulo-empresa h2 {
+    color: var(--verde-principal);
+    font-size: clamp(16px, 1.8vw, 23px);
+    letter-spacing: 1.5px;
+}
+
+/* BOTÓN ADMIN Y MARCA CAMWEB */
+
+.acciones-encabezado {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+}
+
+.boton-admin {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    color: var(--verde-principal);
+    border: 0;
+    border-radius: 0;
+    padding: 0;
+    font-size: 30px;
+    line-height: 1;
+    cursor: pointer;
+    transition: color 0.2s, transform 0.2s;
+}
+
+.boton-admin:hover {
+    background: transparent;
+    color: var(--verde-oscuro);
+    transform: scale(1.08);
+}
+.boton-admin svg { display: block; width: 36px; height: 36px; fill: currentColor; }
+
+.marca-camweb {
+    color: var(--verde-oscuro);
+    font-size: 19px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+/* ==========================================
+   DISTRIBUCIÓN PRINCIPAL
+   IZQUIERDA 15 % | CENTRO 70 % | DERECHA 15 %
+========================================== */
+
+.contenido {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 15% minmax(0, 70%) 15%;
+    gap: 0;
+    align-items: stretch;
+    min-height: calc(100vh - 205px);
+}
+
+/* LATERALES */
+
+.lateral {
+    min-width: 0;
+    min-height: 100%;
+    background: var(--verde-claro);
+}
+
+.lateral-izquierdo {
+    border-right: 1px solid var(--borde);
+}
+
+.lateral-derecho {
+    border-left: 1px solid var(--borde);
+}
+
+/* ==========================================
+   ZONA CENTRAL DE VEHÍCULOS
+========================================== */
+
+.zona-flota {
+    width: 100%;
+    min-width: 0;
+    padding: 25px 24px 35px;
+    background: var(--blanco);
+}
+
+/* TÍTULO VEHÍCULOS */
+
+.titulo-flota {
+    width: 100%;
+    padding: 22px 12px;
+    margin-bottom: 25px;
+    text-align: center;
+    color: var(--blanco);
+    background: var(--verde-principal);
+    border-radius: 12px;
+}
+
+.titulo-flota h2 {
+    font-size: 25px;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+}
+
+.titulo-flota p {
+    font-size: 14px;
+}
+
+/* ==========================================
+   TARJETAS DE VEHÍCULOS
+========================================== */
+
+.rejilla-carros {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+    align-items: stretch;
+}
+
+.tarjeta-carro {
+    min-width: 0;
+    min-height: 240px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 8px 0;
+    text-align: center;
+    background: var(--blanco);
+    border: 1px solid var(--borde);
+    border-radius: 9px;
+    box-shadow: 0 3px 9px rgba(49, 87, 44, 0.08);
+    overflow-wrap: anywhere;
+    transition: box-shadow 0.2s;
+}
+
+.tarjeta-carro:hover {
+    box-shadow: 0 5px 12px rgba(49, 87, 44, 0.15);
+}
+
+/* VEHÍCULO INACTIVO */
+
+.tarjeta-carro.inactivo {
+    background: #f0f1ef;
+    border-color: #929b90;
+    box-shadow: none;
+}
+
+/* NUMERACIÓN DEL CAMIÓN */
+
+.numero-carro {
+    width: 100%;
+    margin-bottom: 7px;
+    color: var(--verde-oscuro);
+    font-size: 13px;
+    font-weight: 800;
+}
+
+/* ICONO DEL CAMIÓN */
+
+.icono-carro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 45px;
+    line-height: 1.2;
+    margin-bottom: 8px;
+}
+
+/* CHOFER */
+
+.nombre-carro {
+    width: 100%;
+    color: var(--verde-oscuro);
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 1.4;
+    margin-bottom: 4px;
+    overflow-wrap: anywhere;
+}
+
+/* AYUDANTES */
+
+.ayudantes-carro {
+    width: 100%;
+    color: #586451;
+    font-size: 10px;
+    line-height: 1.4;
+    margin-bottom: 5px;
+    overflow-wrap: anywhere;
+}
+
+/* PLACA */
+
+.placa-carro {
+    width: 100%;
+    color: var(--texto);
+    font-size: 11px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    overflow-wrap: anywhere;
+}
+
+/* RUTA */
+
+.nombre-ruta {
+    width: 100%;
+    color: var(--verde-principal);
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 1.4;
+    margin-bottom: 8px;
+    overflow-wrap: anywhere;
+}
+
+/* ESTADO */
+
+.estado-carro {
+    display: inline-block;
+    padding: 5px 9px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.estado-activo {
+    background: #dcefd7;
+    color: #285d25;
+}
+
+.estado-inactivo {
+    background: var(--gris);
+    color: #62665f;
+}
+
+/* ==========================================
+   BOTÓN INGRESAR
+========================================== */
+
+.boton-ingresar {
+    width: calc(100% + 16px);
+    min-height: 40px;
+    margin-top: auto;
+    padding: 10px 5px;
+    color: var(--blanco);
+    background: var(--verde-oscuro);
+    border: none;
+    border-radius: 0 0 8px 8px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.boton-ingresar:hover:not(:disabled) {
+    background: var(--verde-principal);
+}
+
+.boton-ingresar:disabled {
+    color: #f5f5f5;
+    background: #a8ada5;
+    cursor: not-allowed;
+}
+
+/* MENSAJE CUANDO NO HAY VEHÍCULOS */
+
+.mensaje-sin-vehiculos {
+    grid-column: 1 / -1;
+    padding: 28px 15px;
+    border: 1px dashed var(--borde);
+    border-radius: 9px;
+    color: var(--verde-oscuro);
+    background: var(--verde-fondo);
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* ==========================================
+   PIE DE PÁGINA
+========================================== */
+
+.pie-pagina {
+    min-height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 14px;
+    color: var(--verde-oscuro);
+    background: var(--verde-claro);
+    text-align: center;
+    font-size: 13px;
+}
+
+/* ==========================================
+   PANTALLAS MEDIANAS
+========================================== */
+
+@media (max-width: 1200px) {
+    .encabezado {
+        grid-template-columns: 120px minmax(0, 1fr) 120px;
+        gap: 12px;
+        padding: 15px;
+    }
+
+    .marco-logo {
+        width: 100px;
+        height: 85px;
+    }
+
+    .contenido {
+        grid-template-columns: 10% minmax(0, 80%) 10%;
+    }
+
+    .zona-flota {
+        padding: 20px 15px 30px;
+    }
+
+    .rejilla-carros {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 10px;
+    }
+}
+
+/* TABLETAS */
+
+@media (max-width: 900px) {
+    .contenido {
+        grid-template-columns: 5% minmax(0, 90%) 5%;
+    }
+
+    .rejilla-carros {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+    }
+}
+
+/* ==========================================
+   TABLETAS PEQUEÑAS Y CELULARES
+========================================== */
+
+@media (max-width: 650px) {
+    .encabezado {
+        grid-template-columns: 75px minmax(0, 1fr);
+        gap: 10px;
+        padding: 12px;
+    }
+
+    .marco-logo {
+        width: 70px;
+        height: 65px;
+        font-size: 12px;
+    }
+
+    .titulo-empresa h1 {
+        font-size: 17px;
+        margin-bottom: 8px;
+    }
+
+    .titulo-empresa h2 {
+        font-size: 14px;
+        letter-spacing: 0.5px;
+    }
+
+    .acciones-encabezado {
+        grid-column: 1 / -1;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .boton-admin {
+        padding: 0;
+    }
+
+    .contenido {
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+
+    .lateral {
+        display: none;
+    }
+
+    .zona-flota {
+        padding: 16px 10px 25px;
+    }
+
+    .titulo-flota {
+        padding: 17px 5px;
+        margin-bottom: 17px;
+    }
+
+    .titulo-flota h2 {
+        font-size: 20px;
+    }
+
+    .titulo-flota p {
+        font-size: 12px;
+    }
+
+    .rejilla-carros {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .tarjeta-carro {
+        min-height: 230px;
+        padding: 12px 7px 0;
+    }
+
+    .icono-carro {
+        font-size: 36px;
+    }
+
+    .nombre-carro {
+        font-size: 12px;
+    }
+
+    .ayudantes-carro {
+        font-size: 10px;
+    }
+
+    .nombre-ruta,
+    .placa-carro {
+        font-size: 10px;
+    }
+
+    .boton-ingresar {
+        font-size: 11px;
+        padding: 10px 3px;
+    }
+}
+
+/* CELULARES MUY PEQUEÑOS */
+
+@media (max-width: 360px) {
+    .rejilla-carros {
+        grid-template-columns: 1fr;
+    }
+
+    .tarjeta-carro {
+        min-height: 220px;
+    }
+}
+
+/* ELEMENTOS OCULTOS */
+
+[hidden] {
+    display: none !important;
+}
+
+/* Registro diario de leche */
+.panel-registro-leche{width:min(100%,1000px);margin:0 auto;padding:20px;background:#fff;border:1px solid var(--borde);border-radius:14px;box-shadow:0 4px 14px rgba(49,87,44,.1)}
+.panel-registro-leche>h2{text-align:center;color:var(--verde-oscuro);background:var(--verde-claro);border-radius:10px;padding:15px;font-size:clamp(20px,3vw,27px);font-weight:600;letter-spacing:.5px}
+.boton-volver-flota{margin-bottom:12px;padding:9px 15px;border:0;border-radius:8px;background:var(--verde-oscuro);color:#fff;font-size:14px;cursor:pointer}
+.datos-camion-registro{text-align:center;color:var(--verde-principal);font-size:15px;font-weight:500;padding:15px 8px;line-height:1.7}
+.herramientas-clientes{display:flex;align-items:center;justify-content:center;gap:10px;margin:4px auto 0;max-width:640px}
+.boton-microfono,.boton-buscar-leche{width:46px;height:44px;border:0;border-radius:9px;background:var(--verde-oscuro);color:#fff;font-size:23px;cursor:pointer}
+.buscador-clientes-flota{flex:1}.buscador-clientes-flota input{width:100%;height:44px;padding:0 13px;border:1px solid var(--borde);border-radius:9px;font:inherit;font-size:15px;outline-color:var(--verde-principal)}
+.ayuda-voz-leche{text-align:center;color:var(--verde-principal);font-size:13px;margin:10px 0 14px;min-height:18px}
+.lista-clientes-flota{display:grid;gap:9px}.fila-cliente-flota{display:grid;grid-template-columns:minmax(140px,1fr) minmax(110px,160px) auto;align-items:center;gap:12px;padding:11px 13px;border:1px solid var(--borde);border-radius:10px;background:#fff}.fila-cliente-flota.cliente-seleccionado{border-color:var(--verde-principal);background:var(--verde-fondo)}
+.nombre-cliente-flota{justify-self:start;border:0;background:transparent;color:var(--verde-principal);font:inherit;font-size:17px;font-weight:500;text-align:left;cursor:pointer}.fila-cliente-flota input{width:100%;height:40px;padding:0 10px;border:1px solid var(--borde);border-radius:8px;color:var(--verde-oscuro);font:inherit;font-size:16px}.fila-cliente-flota input[readonly]{background:#f3f7f1}.acciones-cliente-leche{display:flex;gap:7px}.acciones-cliente-leche button{height:39px;border:0;border-radius:8px;cursor:pointer}.boton-editar-leche{width:40px;background:#e5efdf;color:var(--verde-oscuro);font-size:21px}.boton-guardar-leche{padding:0 13px;background:var(--verde-oscuro);color:#fff;font-size:12px;font-weight:600;letter-spacing:.3px}.acciones-cliente-leche button:disabled{opacity:.45;cursor:not-allowed}.solo-lectores{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+@media(max-width:600px){.panel-registro-leche{padding:12px}.datos-camion-registro{font-size:13px}.fila-cliente-flota{grid-template-columns:minmax(0,1fr) auto;gap:8px}.fila-cliente-flota input{grid-column:1;grid-row:2}.acciones-cliente-leche{grid-column:2;grid-row:1 / span 2}.boton-guardar-leche{padding:0 9px}.nombre-cliente-flota{font-size:16px}}
+/* Cabecera compacta del registro */
+.cabecera-registro-leche{position:relative;display:flex;align-items:center;justify-content:center;min-height:50px;margin-bottom:10px}
+.cabecera-registro-leche>h2{flex:1;margin:0;text-align:center}
+.boton-volver-flota{position:absolute;left:0;top:50%;transform:translateY(-50%);width:42px;height:42px;display:flex;align-items:center;justify-content:center;margin:0;padding:0;border:0;border-radius:9px;background:var(--verde-oscuro);color:#fff;font-size:23px;line-height:1;cursor:pointer}
+.datos-camion-registro{padding:12px 8px;overflow-x:auto}
+.linea-datos-camion{width:max-content;min-width:100%;text-align:center;white-space:nowrap;color:var(--verde-principal);font-size:15px;font-weight:500}
+.boton-buscar-leche{width:36px;height:36px;flex:0 0 36px;font-size:17px;border-radius:8px}
+@media(max-width:600px){.cabecera-registro-leche{min-height:44px}.cabecera-registro-leche>h2{padding:12px 44px;font-size:19px}.boton-volver-flota{width:36px;height:36px;font-size:20px}.linea-datos-camion{font-size:13px}}
+.identificador-camion-registro{font-size:16px;font-weight:600;color:var(--verde-oscuro);margin-bottom:5px}
+.personal-camion-registro{font-size:14px;font-weight:500;color:var(--verde-principal)}
+.herramientas-clientes{max-width:460px}
+.boton-volver-flota{width:39px;height:39px;flex:0 0 39px;display:inline-flex;align-items:center;justify-content:center;padding:0;border:1px solid var(--borde);border-radius:7px;background:#edf4e9;color:var(--verde-oscuro);font-size:22px}
+.boton-volver-flota:hover{background:#d1e4c8}
+.boton-volver-flota .icono-volver-flota{display:block;width:22px;height:22px;fill:var(--verde-principal)}
+@media(max-width:600px){.boton-volver-flota{width:39px;height:39px;font-size:22px}}
+.ruta-camion-registro{font-size:13px;font-weight:500;color:var(--verde-principal)}
+
+.acciones-modos-registro{display:flex;align-items:flex-start;justify-content:flex-start;gap:10px;margin:8px 0 12px}
+.acciones-modos-registro .boton-modo-descarga{min-width:68px;min-height:58px;padding:6px;border:1px solid var(--verde-oscuro);border-radius:8px;background:var(--verde-oscuro);color:#fff}
+.acciones-modos-registro .boton-modo-descarga svg{width:23px;height:23px}
+.acciones-modos-registro .boton-modo-descarga:not(.boton-modo-leche) svg path:first-child{fill:#d9342b}
+.acciones-modos-registro .boton-modo-descarga:not(.boton-modo-leche) svg path:last-child{fill:#fff}
+.acciones-modos-registro .boton-modo-descarga span{font-size:9px;text-align:center}
+.acciones-modos-registro .boton-modo-leche{min-width:112px}
+.acciones-modos-registro{justify-content:center}
+.acciones-modos-registro .boton-modo-leche img{width:25px;height:25px;object-fit:contain}
+.fila-proveedor-producto{grid-template-columns:minmax(120px,1fr) minmax(100px,160px) auto}
+@media(max-width:600px){.fila-proveedor-producto{grid-template-columns:minmax(0,1fr) auto}.fila-proveedor-producto input{grid-column:1;grid-row:2}.fila-proveedor-producto .acciones-cliente-leche{grid-column:2;grid-row:1 / span 2}}
+
+/* Botón compacto de descarga de producto */
+.boton-modo-descarga{min-width:66px;min-height:58px;padding:6px;border:1px solid var(--verde-oscuro);border-radius:8px;background:var(--verde-oscuro);color:#fff}
+.boton-modo-descarga svg{width:23px;height:23px}
+.boton-modo-descarga svg path:first-child{fill:#d9342b}
+.boton-modo-descarga svg path:last-child{fill:#fff}
+.boton-modo-descarga span{font-size:10px}
+
+/* Colores del encabezado y laterales, compartidos con el panel administrador */
+.encabezado{background:var(--verde-claro);border-bottom:4px solid var(--verde-lateral)}
+.titulo-empresa h1,.marca-camweb{color:var(--verde-oscuro)}
+.titulo-empresa h2{color:var(--verde-principal)}
+.marco-logo{border-color:var(--verde-principal);color:var(--verde-oscuro)}
+.lateral{background:var(--verde-lateral)}
+.lateral-izquierdo{border-right:1px solid var(--borde)}
+.lateral-derecho{border-left-color:var(--verde-lateral)}
+body,.contenido{background:var(--verde-fondo)}
+.zona-flota{width:auto;margin:14px;padding:22px 20px 26px;background:#fff;border:1px solid var(--borde);border-radius:12px;box-shadow:0 3px 12px rgba(40,88,50,.08)}
+.titulo-flota{padding:8px 4px 14px;margin-bottom:16px;background:transparent;color:var(--verde-oscuro);border-radius:0;text-align:center}
+.titulo-flota p{color:#536453}
+.tarjeta-carro{background:#fff;border-color:var(--borde);box-shadow:0 3px 9px rgba(40,88,50,.1)}
+.boton-ingresar{background:var(--verde-principal)}
+.boton-ingresar:hover:not(:disabled){background:var(--verde-oscuro)}
+.pie-pagina{background:var(--verde-claro);color:var(--verde-oscuro)}
+@media(max-width:600px){.zona-flota{margin:10px;padding:16px 12px 20px}}
+
+/* Nombres de clientes iguales a la lista de Producción */
+.fila-cliente-flota{padding:12px 14px;border:1px solid #e1e9dc;border-radius:8px;background:#fff;transition:border-color .2s,box-shadow .2s,background-color .2s}
+.fila-cliente-flota:hover{border-color:var(--borde);background:#fbfdf9;box-shadow:0 2px 6px rgba(32,63,32,.07)}
+.nombre-cliente-flota{color:var(--verde-oscuro);font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:700;line-height:1.4}
+.nombre-cliente-flota:hover{color:var(--verde-principal);text-decoration:underline}
+.boton-editar-leche{background:#fff7d6;color:#d99a00;border:1px solid #f0d77c!important;font-family:"Segoe UI Emoji","Apple Color Emoji",sans-serif;font-size:20px}
+
+/* El lateral derecho conserva el mismo ancho que el de AdministraciÃ³n */
+.contenido{grid-template-columns:15% minmax(0,1fr) 68px}
+@media(max-width:1200px){.contenido{grid-template-columns:10% minmax(0,1fr) 68px}}
+@media(max-width:900px){.contenido{grid-template-columns:5% minmax(0,1fr) 68px}}
+@media(max-width:650px){.contenido{grid-template-columns:1fr}.lateral{display:none}}
+.boton-editar-leche:hover:not(:disabled){background:#ffefb3;color:#b87900}
+.boton-editar-leche{background:#e7f1e1;color:#d99a00;border:1px solid var(--borde)!important}
+.boton-editar-leche:hover:not(:disabled){background:#d1e4c8;color:#b87900}
+.acciones-modos-registro{display:flex;justify-content:center;align-items:stretch;gap:8px;flex-wrap:wrap;margin:8px 0 12px}
+.acciones-modos-registro .boton-modo-descarga{min-width:108px;min-height:56px;flex:0 1 138px;gap:4px;padding:7px 9px}
+.acciones-modos-registro .boton-modo-descarga svg,.acciones-modos-registro .boton-modo-descarga img{width:19px;height:19px}
+.acciones-modos-registro .boton-modo-descarga span{font-size:9px;line-height:1.15}
+.boton-modo-descarga,.boton-volver-descarga{min-height:38px;padding:8px 14px;border:0;border-radius:7px;background:var(--verde-oscuro);color:#fff;font:700 12px Arial,sans-serif;cursor:pointer}.boton-modo-descarga{display:flex;min-width:82px;min-height:70px;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:8px}.boton-modo-descarga svg{width:25px;height:25px;fill:currentColor}.boton-modo-descarga span{font-size:11px}.vista-descarga-producto>h3{text-align:center;color:var(--verde-oscuro)}.boton-volver-descarga{margin-bottom:8px;background:#e5efdf;color:var(--verde-oscuro)}.lista-proveedores-flota{display:grid;gap:8px}.proveedor-flota{width:100%;padding:12px;border:1px solid var(--borde);border-radius:8px;background:#fff;color:var(--verde-oscuro);font:600 15px Arial,sans-serif;text-align:left;cursor:pointer}.proveedor-flota span{display:block;margin-top:4px;color:#53644e;font-size:12px;font-weight:400}.formulario-descarga-flota{max-width:520px;margin:14px auto;padding:14px;border:1px solid var(--borde);border-radius:9px;background:#f8fbf6}.formulario-descarga-flota h3,.formulario-descarga-flota p{text-align:center}.formulario-descarga-flota label{display:block;margin-bottom:6px;color:var(--verde-oscuro);font-size:13px;font-weight:700}.formulario-descarga-flota input{width:100%;height:42px;margin-bottom:10px;padding:0 10px;border:1px solid var(--borde);border-radius:7px;font:inherit}.formulario-descarga-flota>button[type=submit]{min-height:38px}.formulario-descarga-flota #mensajeDescargaFlota{min-height:18px;color:var(--verde-principal);font-size:12px}
+
+/* Espaciado compacto entre modos, datos del camión y búsqueda */
+.panel-registro-leche{padding:14px 18px}
+.cabecera-registro-leche{margin-bottom:4px}
+.acciones-modos-registro{margin:4px 0 6px}
+.datos-camion-registro{padding:4px 6px 6px;line-height:1.35}
+.identificador-camion-registro{margin-bottom:2px}
+.herramientas-clientes{margin-top:2px}
+.ayuda-voz-leche{margin:5px 0 8px}
+@media(max-width:600px){.panel-registro-leche{padding:10px}.datos-camion-registro{padding:3px 4px 5px}}
+.acciones-cliente-leche{gap:4px}
+.acciones-cliente-leche button{height:30px;border-radius:6px}
+.boton-editar-leche{width:30px;font-size:16px}
+.boton-guardar-leche{padding:0 8px;font-size:10px;letter-spacing:0}
+.fila-cliente-flota input{height:34px;padding:0 8px;font-size:14px}
+.panel-registro-leche input[type="number"]{-moz-appearance:textfield;appearance:textfield}
+.panel-registro-leche input[type="number"]::-webkit-inner-spin-button,.panel-registro-leche input[type="number"]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+@media(max-width:600px){.boton-guardar-leche{padding:0 7px}}
+
+.fondo-acceso-admin[hidden]{display:none}
+.fondo-acceso-admin{position:fixed;z-index:1000;inset:0;display:grid;place-items:center;padding:18px;background:rgba(15,30,18,.58)}
+.fondo-acceso-camion[hidden]{display:none}
+.fondo-acceso-camion{position:fixed;z-index:1001;inset:0;display:grid;place-items:center;padding:18px;background:rgba(15,30,18,.58)}
+.panel-acceso-admin{width:min(100%,360px);padding:24px;border:1px solid var(--borde);border-radius:12px;background:#fff;box-shadow:0 12px 36px rgba(0,0,0,.22)}
+.panel-acceso-admin h2{margin:0 0 20px;color:var(--verde-oscuro);font-size:20px;text-align:center}
+.panel-acceso-admin label{display:block;margin:0 0 12px;color:var(--verde-oscuro);font-size:13px;font-weight:700}
+.panel-acceso-admin input{box-sizing:border-box;width:100%;height:42px;margin-top:6px;padding:0 10px;border:1px solid var(--borde);border-radius:7px;font:inherit}
+.ayuda-acceso-admin{min-height:18px;margin:5px 0 16px;color:#536453;font-size:11px;line-height:1.4}
+.acciones-acceso-admin{display:flex;justify-content:flex-end;gap:8px}
+.acciones-acceso-admin button{min-height:38px;padding:0 14px;border:0;border-radius:7px;font:700 12px Arial,sans-serif;cursor:pointer}
+.cancelar-acceso-admin{background:#edf2e9;color:var(--verde-oscuro)}
+.ingresar-acceso-admin{background:var(--verde-principal);color:#fff}
+.ingresar-acceso-admin:hover{background:var(--verde-oscuro)}
